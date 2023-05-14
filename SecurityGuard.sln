@@ -7,9 +7,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B0BF0ABA-726
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{342B11A8-A77D-4BF2-88AC-6295B7AE8BA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityGuard.WPF", "SecurityGuard.WPF\SecurityGuard.WPF.csproj", "{C52F52FE-EEF9-4B05-B9E8-8C937D7555A1}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C52F52FE-EEF9-4B05-B9E8-8C937D7555A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C52F52FE-EEF9-4B05-B9E8-8C937D7555A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C52F52FE-EEF9-4B05-B9E8-8C937D7555A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C52F52FE-EEF9-4B05-B9E8-8C937D7555A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C52F52FE-EEF9-4B05-B9E8-8C937D7555A1} = {B0BF0ABA-7262-4970-989B-F4948558DEA3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C0105B1-5158-4C92-BB0D-3358D7E217F2}
