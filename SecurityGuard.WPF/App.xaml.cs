@@ -42,6 +42,7 @@ namespace SecurityGuard.WPF
         }
         protected override void OnStartup(StartupEventArgs e)
         {
+            _host.Start();
 
             MainWindow = _host.Services.GetRequiredService<MainWindow>();
             MainWindow.Show();
