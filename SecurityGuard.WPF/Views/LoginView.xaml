@@ -22,33 +22,62 @@
 
             <TextBlock 
                 Text="Вход"
-                Foreground="White"
-                FontSize="32"
+                Foreground="WhiteSmoke"
+                FontSize="82"
                 HorizontalAlignment="Center"/>
             <TextBlock
-                Text="Войдите чтобы начать пользоваться приложением"
-                Foreground="White"
+                Text="Войдите чтобы начать пользоваться приложением!"
+                Foreground="WhiteSmoke"
+                FontSize="20"
                 Margin="0 10 0 0"/>
         </StackPanel>
 
         <StackPanel
             Grid.Row="1"
             Orientation="Vertical"
-            Margin="0 20 0 0">
-            <ComboBox>
-                <ComboBoxItem
-                    Content="Сортрудник общего отдела"/>
-                <ComboBoxItem
-                    Content="Сотрудник охраны"/>
-            </ComboBox>
+            Margin="0 40 0 0"
+            Width="350">
 
-            <TextBox
-                Margin="0 20 0 0"
-                Foreground="white"/>
+            <Grid>
+                <TextBox
+                    x:Name="TbLogin"
+                    Foreground="white"
+                    Height="50"
+                    FontSize="20"
+                    Padding="30 0 0 0"
+                    Background="#224957"
+                    BorderThickness="0">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <TextBlock 
+                    IsHitTestVisible="False"
+                    Text="Введите логин"
+                    Foreground="white"
+                    FontSize="20"
+                    VerticalAlignment="Center"
+                    Margin="30 0 0 0">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=TbLogin}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
 
             <custom:BindablePasswordBox
-                Margin="0 20 0 0"
-                Foreground="white"/>
+                Margin="0 30 0 0"
+                Foreground="white"
+                Height="50">
+            </custom:BindablePasswordBox>
         </StackPanel>
 
         <StackPanel 

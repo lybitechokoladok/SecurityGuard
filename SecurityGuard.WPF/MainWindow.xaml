@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SecurityGuard.WPF"
+        xmlns:views="clr-namespace:SecurityGuard.WPF.Views"
         mc:Ignorable="d"
-        Title="Security Guard" Height="720" Width="1024">
+        Title="Security Guard" Height="850" Width="1550"
+        Background="#212B38">
     <Grid>
-
+        <views:LoginView 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
     </Grid>
 </Window>
