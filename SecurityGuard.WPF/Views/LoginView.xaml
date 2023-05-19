@@ -73,11 +73,7 @@
                 </TextBlock>
             </Grid>
 
-            <custom:BindablePasswordBox
-                Margin="0 30 0 0"
-                Foreground="white"
-                Height="50">
-            </custom:BindablePasswordBox>
+            
         </StackPanel>
 
         <StackPanel 
