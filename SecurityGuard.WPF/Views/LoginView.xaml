@@ -129,7 +129,7 @@
             Grid.Row="3"
             Content="Войти в систему"
             FontSize="20"
-            Width="350" Height="50"
+            Width="350" Height="70"
             Margin="0 20 0 0"
             Background="#CE6315"/>
     </Grid>
