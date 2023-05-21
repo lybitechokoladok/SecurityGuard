@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SecurityGuard.WPF.Views"
              xmlns:custom="clr-namespace:SecurityGuard.WPF.Components"
+             xmlns:s="clr-namespace:System;assembly=mscorlib"
+             xmlns:mwt="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -108,21 +110,79 @@
             Width="350"
             Margin="0 20 0 0"
             HorizontalAlignment="Center">
-            
+
             <CheckBox
                 Content="Запомнить меня"
                 Foreground="White"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Center"/>
+                VerticalAlignment="Center">
+                <CheckBox.Style>
+                    <Style TargetType="{x:Type CheckBox}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="CheckBox">
+                                    <BulletDecorator Background="#00FFFFFF" SnapsToDevicePixels="True">
+                                        <BulletDecorator.Bullet>
+                                            <mwt:BulletChrome Background="{TemplateBinding Panel.Background}" BorderBrush="{TemplateBinding Border.BorderBrush}" RenderMouseOver="{TemplateBinding UIElement.IsMouseOver}" RenderPressed="{TemplateBinding ButtonBase.IsPressed}" IsChecked="{TemplateBinding ToggleButton.IsChecked}" />
+                                        </BulletDecorator.Bullet>
+                                        <ContentPresenter RecognizesAccessKey="True" Content="{TemplateBinding ContentControl.Content}" ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}" Margin="{TemplateBinding Control.Padding}" HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                    </BulletDecorator>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="ContentControl.HasContent">
+                                            <Setter Property="FrameworkElement.FocusVisualStyle">
+                                                <Setter.Value>
+                                                    <Style TargetType="IFrameworkInputElement">
+                                                        <Style.Resources>
+                                                            <ResourceDictionary />
+                                                        </Style.Resources>
+                                                        <Setter Property="Control.Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate>
+                                                                    <Rectangle Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2" Margin="14,0,0,0" SnapsToDevicePixels="True" />
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Control.Padding">
+                                                <Setter.Value>
+                                                    <Thickness>1,1,1,1</Thickness>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Trigger.Value>
+                                                <s:Boolean>True</s:Boolean>
+                                            </Trigger.Value>
+                                        </Trigger>
+                                        <Trigger Property="UIElement.IsEnabled">
+                                            <Setter Property="TextElement.Foreground">
+                                                <Setter.Value>
+                                                    <DynamicResource ResourceKey="{x:Static SystemColors.GrayTextBrushKey}" />
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Trigger.Value>
+                                                <s:Boolean>False</s:Boolean>
+                                            </Trigger.Value>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </CheckBox.Style>
+            </CheckBox>
 
-            <Button
-                Content="Забыли пароль?"
+            <TextBlock
+                Text="Забыли пароль?"
                 Foreground="White"
                 HorizontalAlignment="Right"
                 Margin="20 0 0 0"
                 Background="Transparent"
-                VerticalAlignment="Center"
-                BorderThickness="0"/>
+                VerticalAlignment="Center">
+                <TextBlock.InputBindings>
+                    
+                </TextBlock.InputBindings>
+            </TextBlock>
         </DockPanel>
 
         <Button 
