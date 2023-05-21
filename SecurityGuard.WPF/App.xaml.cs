@@ -3,6 +3,8 @@ using Microsoft.Extensions.Hosting;
 using MVVMEssentials.Services;
 using MVVMEssentials.Stores;
 using MVVMEssentials.ViewModels;
+using SecurityGuard.WPF.Services;
+using SecurityGuard.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -31,6 +33,9 @@ namespace SecurityGuard.WPF
                      serviceCollection.AddSingleton<INavigationService>(s => CreateLoginNavigationService(s));
                      serviceCollection.AddSingleton<CloseModalNavigationService>();
 
+                     serviceCollection.AddTransient<LoginViewModel>();
+                     serviceCollection.AddTransient<NavigationBarViewModel>();
+
                      serviceCollection.AddSingleton<MainViewModel>();
                      serviceCollection.AddSingleton<MainWindow>((services) => new MainWindow()
                      {
@@ -41,12 +46,18 @@ namespace SecurityGuard.WPF
         }
         private INavigationService CreateLoginNavigationService(IServiceProvider s)
         {
-            throw new NotImplementedException();
+            return new LayoutNavigationService<LoginViewModel>(
+                s.GetRequiredService<NavigationStore>(),
+                () => s.GetRequiredService<LoginViewModel>(),
+                () => s.GetRequiredService<NavigationBarViewModel>());
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
             _host.Start();
+
+            INavigationService initialNavigationService = _host.Services.GetRequiredService<INavigationService>();
+            initialNavigationService.Navigate();
 
             MainWindow = _host.Services.GetRequiredService<MainWindow>();
             MainWindow.Show();

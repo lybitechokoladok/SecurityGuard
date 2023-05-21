@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SecurityGuard.WPF"
         xmlns:views="clr-namespace:SecurityGuard.WPF.Views"
         xmlns:vms="clr-namespace:SecurityGuard.WPF.ViewModels"
+        xmlns:components="clr-namespace:SecurityGuard.WPF.Components"
         mc:Ignorable="d"
         Title="Security Guard" Height="850" Width="1550"
         Background="#212B38">
@@ -13,6 +14,9 @@
         <Grid.Resources>
             <DataTemplate DataType="{x:Type vms:LoginViewModel}">
                 <views:LoginView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:LayoutViewModel}">
+                <components:Layout/>
             </DataTemplate>
         </Grid.Resources>
 
