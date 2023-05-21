@@ -43,6 +43,7 @@
             <Grid>
                 <TextBox
                     x:Name="TbLogin"
+                    Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                     Foreground="white"
                     Height="50"
                     FontSize="20"
@@ -79,6 +80,7 @@
             <Grid Margin="0 30 0 0">
                 <custom:BindablePasswordBox
                     x:Name="TbPassword"
+                    Password="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
                     Foreground="white"
                     Height="50"
                     FontSize="20"
@@ -115,6 +117,8 @@
                 Content="Запомнить меня"
                 Foreground="White"
                 HorizontalAlignment="Left"
+                Command="{Binding RememberMeCommand}"
+                CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
                 VerticalAlignment="Center">
                 <CheckBox.Style>
                     <Style TargetType="{x:Type CheckBox}">
@@ -180,7 +184,7 @@
                 Background="Transparent"
                 VerticalAlignment="Center">
                 <TextBlock.InputBindings>
-                    <MouseBinding Command="{Binding Command}"  MouseAction="LeftClick"/>
+                    <MouseBinding Command="{Binding ForgotPasswordCommand}"  MouseAction="LeftClick"/>
                 </TextBlock.InputBindings>
             </TextBlock>
         </DockPanel>
@@ -191,6 +195,7 @@
             FontSize="20"
             Width="350" Height="70"
             Margin="0 20 0 0"
-            Background="#CE6315"/>
+            Background="#CE6315"
+            Command="{Binding LoginCommand}"/>
     </Grid>
 </UserControl>

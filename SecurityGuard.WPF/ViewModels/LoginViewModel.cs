@@ -40,6 +40,8 @@ namespace SecurityGuard.WPF.ViewModels
         }
 
         public ICommand LoginCommand { get; }
+        public ICommand RemeberMeCommand { get; }
+        public ICommand ForgotPasswordCommand { get; }
 
         public LoginViewModel()
         {
