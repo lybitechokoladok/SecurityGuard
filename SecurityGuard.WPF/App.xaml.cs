@@ -26,18 +26,40 @@ namespace SecurityGuard.WPF
                  .CreateDefaultBuilder()
                  .ConfigureServices((context, serviceCollection) =>
                  {
+                     serviceCollection.AddSingleton<NavigationStore>();
+                     serviceCollection.AddSingleton<ModalNavigationStore>();
+                     serviceCollection.AddSingleton<INavigationService>(s => CreateLoginNavigationService(s));
+                     serviceCollection.AddSingleton<CloseModalNavigationService>();
 
-                     serviceCollection.AddSingleton<MainWindow>((services) => new MainWindow());
+                     serviceCollection.AddSingleton<MainViewModel>();
+                     serviceCollection.AddSingleton<MainWindow>((services) => new MainWindow()
+                     {
+                         DataContext = services.GetRequiredService<MainViewModel>()
+                     }) ;
                  })
                 .Build();
         }
+        private INavigationService CreateLoginNavigationService(IServiceProvider s)
+        {
+            throw new NotImplementedException();
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
+            _host.Start();
 
             MainWindow = _host.Services.GetRequiredService<MainWindow>();
             MainWindow.Show();
 
             base.OnStartup(e);
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            _host.StopAsync();
+            _host.Dispose();
+
+            base.OnExit(e);
         }
     }
 }
