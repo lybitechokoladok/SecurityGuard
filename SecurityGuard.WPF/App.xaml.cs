@@ -44,13 +44,6 @@ namespace SecurityGuard.WPF
                  })
                 .Build();
         }
-        private INavigationService CreateLoginNavigationService(IServiceProvider s)
-        {
-            return new LayoutNavigationService<LoginViewModel>(
-                s.GetRequiredService<NavigationStore>(),
-                () => s.GetRequiredService<LoginViewModel>(),
-                () => s.GetRequiredService<NavigationBarViewModel>());
-        }
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -71,6 +64,13 @@ namespace SecurityGuard.WPF
             _host.Dispose();
 
             base.OnExit(e);
+        }
+
+        private INavigationService CreateLoginNavigationService(IServiceProvider s)
+        {
+            return new LayoutNavigationService<LoginViewModel>(
+                s.GetRequiredService<NavigationStore>(),
+                () => s.GetRequiredService<LoginViewModel>());
         }
     }
 }

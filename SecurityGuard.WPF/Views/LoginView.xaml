@@ -97,7 +97,7 @@
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="Visibility" Value="Collapsed"/>
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding Password, ElementName=TbPassword}" Value="">
+                                <DataTrigger Binding="{Binding Password, ElementName=TbPassword}" Value="{x:Null}">
                                     <Setter Property="Visibility" Value="Visible"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -117,63 +117,9 @@
                 Content="Запомнить меня"
                 Foreground="White"
                 HorizontalAlignment="Left"
-                Command="{Binding RememberMeCommand}"
+                Command="{Binding RemeberMeCommand}"
                 CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
                 VerticalAlignment="Center">
-                <CheckBox.Style>
-                    <Style TargetType="{x:Type CheckBox}">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="CheckBox">
-                                    <BulletDecorator Background="#00FFFFFF" SnapsToDevicePixels="True">
-                                        <BulletDecorator.Bullet>
-                                            <mwt:BulletChrome Background="{TemplateBinding Panel.Background}" BorderBrush="{TemplateBinding Border.BorderBrush}" RenderMouseOver="{TemplateBinding UIElement.IsMouseOver}" RenderPressed="{TemplateBinding ButtonBase.IsPressed}" IsChecked="{TemplateBinding ToggleButton.IsChecked}" />
-                                        </BulletDecorator.Bullet>
-                                        <ContentPresenter RecognizesAccessKey="True" Content="{TemplateBinding ContentControl.Content}" ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}" Margin="{TemplateBinding Control.Padding}" HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
-                                    </BulletDecorator>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="ContentControl.HasContent">
-                                            <Setter Property="FrameworkElement.FocusVisualStyle">
-                                                <Setter.Value>
-                                                    <Style TargetType="IFrameworkInputElement">
-                                                        <Style.Resources>
-                                                            <ResourceDictionary />
-                                                        </Style.Resources>
-                                                        <Setter Property="Control.Template">
-                                                            <Setter.Value>
-                                                                <ControlTemplate>
-                                                                    <Rectangle Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2" Margin="14,0,0,0" SnapsToDevicePixels="True" />
-                                                                </ControlTemplate>
-                                                            </Setter.Value>
-                                                        </Setter>
-                                                    </Style>
-                                                </Setter.Value>
-                                            </Setter>
-                                            <Setter Property="Control.Padding">
-                                                <Setter.Value>
-                                                    <Thickness>1,1,1,1</Thickness>
-                                                </Setter.Value>
-                                            </Setter>
-                                            <Trigger.Value>
-                                                <s:Boolean>True</s:Boolean>
-                                            </Trigger.Value>
-                                        </Trigger>
-                                        <Trigger Property="UIElement.IsEnabled">
-                                            <Setter Property="TextElement.Foreground">
-                                                <Setter.Value>
-                                                    <DynamicResource ResourceKey="{x:Static SystemColors.GrayTextBrushKey}" />
-                                                </Setter.Value>
-                                            </Setter>
-                                            <Trigger.Value>
-                                                <s:Boolean>False</s:Boolean>
-                                            </Trigger.Value>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </CheckBox.Style>
             </CheckBox>
 
             <TextBlock

@@ -26,9 +26,20 @@ namespace SecurityGuard.WPF.Services
             _createNavigationBarViewModel = createNavigationBarViewModel;
         }
 
+        public LayoutNavigationService(NavigationStore navigationStore,
+           Func<TViewModel> createViewModel)
+        {
+            _navigationStore = navigationStore;
+            _createViewModel = createViewModel;
+            _createNavigationBarViewModel = null;
+        }
+
         public void Navigate()
         {
-            _navigationStore.CurrentViewModel = new LayoutViewModel(_createNavigationBarViewModel(), _createViewModel());
+            if (_createNavigationBarViewModel is null)
+                _navigationStore.CurrentViewModel = new LayoutViewModel(_createViewModel());
+            else
+                _navigationStore.CurrentViewModel = new LayoutViewModel(_createNavigationBarViewModel(), _createViewModel());
         }
     }
 }
