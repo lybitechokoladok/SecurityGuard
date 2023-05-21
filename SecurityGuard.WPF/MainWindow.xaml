@@ -5,12 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SecurityGuard.WPF"
         xmlns:views="clr-namespace:SecurityGuard.WPF.Views"
+        xmlns:vms="clr-namespace:SecurityGuard.WPF.ViewModels"
         mc:Ignorable="d"
         Title="Security Guard" Height="850" Width="1550"
         Background="#212B38">
     <Grid>
-        <views:LoginView 
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"/>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:LoginViewModel}">
+                <views:LoginView/>
+            </DataTemplate>
+        </Grid.Resources>
+
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>
