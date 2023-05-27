@@ -25,7 +25,7 @@ namespace SecurityGuard.WPF.ViewModels
 
         public override void Dispose()
         {
-            NavigationBarViewModel.Dispose();
+            NavigationBarViewModel?.Dispose();
             ContentViewModel.Dispose();
 
             base.Dispose();
