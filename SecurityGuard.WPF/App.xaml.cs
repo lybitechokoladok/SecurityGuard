@@ -34,7 +34,8 @@ namespace SecurityGuard.WPF
                      serviceCollection.AddSingleton<CloseModalNavigationService>();
 
                      serviceCollection.AddTransient<LoginViewModel>((s) => new LoginViewModel(
-                         s.GetRequiredService<INavigationService>()));
+                         CreateRequestListingNavigationService(s)));
+                     serviceCollection.AddTransient<RequestListingViewModel>();
                      serviceCollection.AddTransient<NavigationBarViewModel>();
 
                      serviceCollection.AddSingleton<MainViewModel>();
@@ -74,9 +75,12 @@ namespace SecurityGuard.WPF
                 () => s.GetRequiredService<LoginViewModel>());
         }
 
-        private INavigationService CreateRequestNavigationService(IServiceProvider s) 
+        private INavigationService CreateRequestListingNavigationService(IServiceProvider s) 
         {
-
+            return new LayoutNavigationService<RequestListingViewModel>(
+                s.GetRequiredService<NavigationStore>(),
+                () => s.GetRequiredService<RequestListingViewModel>(),
+                () => s.GetRequiredService<NavigationBarViewModel>());
         }
     }
 }
