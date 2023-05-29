@@ -9,15 +9,21 @@
     <ScrollViewer HorizontalScrollBarVisibility="Auto"
                   VerticalScrollBarVisibility="Auto">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            <local:NavigationBar Grid.Row="0" DataContext="{Binding NavigationBarViewModel}"/>
+            <local:NavigationBar Grid.Column="0" DataContext="{Binding NavigationBarViewModel}">
+                <local:NavigationBar.Effect>
+                    <DropShadowEffect BlurRadius="10"
+                                      Color="Black"
+                                      />
+                </local:NavigationBar.Effect>
+            </local:NavigationBar>
 
             <ContentControl
-            Grid.Row="1"
+            Grid.Column="1"
             MaxWidth="1000"
             Margin="20"
             Content="{Binding ContentViewModel}"/>

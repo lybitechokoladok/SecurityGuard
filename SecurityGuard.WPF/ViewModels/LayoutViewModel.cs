@@ -21,6 +21,7 @@ namespace SecurityGuard.WPF.ViewModels
         public LayoutViewModel( ViewModelBase contentViewModel)
         {
             ContentViewModel = contentViewModel;
+            NavigationBarViewModel = null;
         }
 
         public override void Dispose()

@@ -13,6 +13,9 @@
     <Compile Update="Components\Layout.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Components\LayoutWithoutNavBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\NavigationBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +31,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\Layout.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\LayoutWithoutNavBar.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\NavigationBar.xaml">

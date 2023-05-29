@@ -20,6 +20,9 @@
             <DataTemplate DataType="{x:Type vms:LayoutViewModel}">
                 <components:Layout/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:LayoutWithoutNavBarViewModel}">
+                <components:LayoutWithoutNavBar/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type vms:RequestListingViewModel}">
                 <views:RequestListingView/>
             </DataTemplate>
