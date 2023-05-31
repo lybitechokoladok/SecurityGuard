@@ -18,9 +18,9 @@ namespace SecurityGuard.WPF.Components
     /// <summary>
     /// Логика взаимодействия для LayoutWithoutNavBar.xaml
     /// </summary>
-    public partial class LayoutWithoutNavBar : UserControl
+    public partial class LoginLayout : UserControl
     {
-        public LayoutWithoutNavBar()
+        public LoginLayout()
         {
             InitializeComponent();
         }

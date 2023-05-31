@@ -13,7 +13,7 @@
     <Compile Update="Components\Layout.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Components\LayoutWithoutNavBar.xaml.cs">
+    <Compile Update="Components\LoginLayout.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Components\NavigationBar.xaml.cs">
@@ -33,7 +33,7 @@
     <Page Update="Components\Layout.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Components\LayoutWithoutNavBar.xaml">
+    <Page Update="Components\LoginLayout.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\NavigationBar.xaml">

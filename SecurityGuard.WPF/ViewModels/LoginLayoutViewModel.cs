@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace SecurityGuard.WPF.ViewModels
 {
-    public class LayoutWithoutNavBarViewModel : ViewModelBase
+    public class LoginLayoutViewModel : ViewModelBase
     {
         public ViewModelBase ContentViewModel { get; }
 
-        public LayoutWithoutNavBarViewModel( ViewModelBase contentViewModel)
+        public LoginLayoutViewModel( ViewModelBase contentViewModel)
         {
             ContentViewModel = contentViewModel;
         }

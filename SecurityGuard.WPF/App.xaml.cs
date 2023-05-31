@@ -70,7 +70,7 @@ namespace SecurityGuard.WPF
 
         private INavigationService CreateLoginNavigationService(IServiceProvider s)
         {
-            return new LayoutWithoutNavBarNavigationService<LoginViewModel>(
+            return new LoginLayoutNavigationService<LoginViewModel>(
                 s.GetRequiredService<NavigationStore>(),
                 () => s.GetRequiredService<LoginViewModel>());
         }
