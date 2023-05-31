@@ -10,7 +10,7 @@
                   VerticalScrollBarVisibility="Auto">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
@@ -24,7 +24,7 @@
 
             <ContentControl
             Grid.Column="1"
-            MaxWidth="1000"
+            MaxWidth="1100"
             Margin="20"
             Content="{Binding ContentViewModel}"/>
 
