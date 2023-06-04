@@ -9,6 +9,6 @@ namespace SecurityGuard.Domain.Abstractions
     public interface IPasswordHasher
     {
         string Hash(string password);
-        bool HashesMatch(string hash, string providedPassword);
+        bool HashesMatch(string passwordHash, string providedPassword);
     }
 }
