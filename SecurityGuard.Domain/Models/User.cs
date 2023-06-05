@@ -14,7 +14,7 @@ namespace SecurityGuard.Domain.Models
         public string Patronomic { get; set; } = string.Empty;
 
         public string JobTitle { get; set; } = string.Empty;
-        public DateTime BirthDay { get; set; } = DateTime.MinValue;
+        public DateTime Birthday { get; set; } = DateTime.MinValue;
         public string HashedPassword { get; set; } = string.Empty;
 
         public override string ToString()

@@ -10,15 +10,11 @@ namespace SecurityGuard.Infrastructure
 {
     public class DBContext
     {
-        private readonly IConfiguration _configuration;
-        public DBContext(IConfiguration config)
-        {
-            _configuration = config;
-        }
+        private static string _conectionString;
 
-        public SqlConnection CreateConnection() 
+        public static SqlConnection CreateConnection() 
         {
-            return new SqlConnection(_configuration.GetConnectionString("default"));
+            return new SqlConnection(_conectionString);
         }
     }
 }

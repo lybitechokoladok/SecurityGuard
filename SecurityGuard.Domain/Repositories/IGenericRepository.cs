@@ -9,7 +9,7 @@ namespace SecurityGuard.Domain.Repositories
     public interface IGenericRepository<T> where T : class
     {
         Task<T> GetByIdAsync(int id);
-        Task<IReadOnlyList<T>> GetAllListAsync();
+        Task<IEnumerable<T>> GetAllListAsync();
         Task AddAsync(T entity);
         Task RemoveAsync(int id);
         Task UpdateAsync(T entity);
