@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SecurityGuard.Domain.Repositories
 {
-    public interface IUserRepository<User>
+    public interface IUserRepository
     {
         Task<User> GetUserByFirstNameAsync(string firstName);
         Task<User> GetByIdAsync(int id);

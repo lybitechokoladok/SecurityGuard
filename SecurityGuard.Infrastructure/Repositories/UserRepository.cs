@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SecurityGuard.Infrastructure.Repositories
 {
-    public class UserRepository : IUserRepository<User>
+    public class UserRepository : IUserRepository
     {
         private readonly DBContext _context;
 
