@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +11,16 @@ namespace SecurityGuard.Infrastructure
 {
     public class DBContext
     {
-        private static string _conectionString;
+        private readonly IConfiguration _configuration;
 
-        public static SqlConnection CreateConnection() 
+        public DBContext(IConfiguration config)
         {
-            return new SqlConnection(_conectionString);
+            _configuration = config;
+        }
+
+        public string GetConnectionString() 
+        {
+            return _configuration.GetConnectionString("default");
         }
     }
 }

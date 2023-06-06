@@ -9,7 +9,7 @@ namespace SecurityGuard.Domain.Repositories
 {
     public interface IUserRepository
     {
-        Task<User> GetUserByFirstNameAsync(string firstName);
+        Task<User> GetUserByUsernameAsync(string username);
         Task<User> GetByIdAsync(int id);
         Task<IEnumerable<User>> GetAllListAsync();
         Task AddAsync(User entity);
