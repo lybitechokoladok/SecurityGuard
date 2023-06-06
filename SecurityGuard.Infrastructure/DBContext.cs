@@ -20,7 +20,10 @@ namespace SecurityGuard.Infrastructure
 
         public string GetConnectionString() 
         {
-            return _configuration.GetConnectionString("default");
+            if (!string.IsNullOrWhiteSpace(_configuration.GetConnectionString("default")))
+                return _configuration.GetConnectionString("default");
+            else
+                throw new Exception();
         }
     }
 }

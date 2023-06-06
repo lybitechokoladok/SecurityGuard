@@ -22,7 +22,7 @@ namespace SecurityGuard.WPF.Services
         }
         public async Task<UserDto> LoginAsync(string username, string password)
         {
-            var user = await _userRepository.GetUserByFirstNameAsync(username);
+            var user = await _userRepository.GetUserByUsernameAsync(username);
             var passwordIsValid = _passwordHasher.HashesMatch(user.HashedPassword, password);
 
             if (!passwordIsValid)
