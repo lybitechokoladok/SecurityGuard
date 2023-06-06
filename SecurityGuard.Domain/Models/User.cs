@@ -11,7 +11,7 @@ namespace SecurityGuard.Domain.Models
         public int Id { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
-        public string Patronomic { get; set; } = string.Empty;
+        public string Username { get; set; } = string.Empty;
 
         public string JobTitle { get; set; } = string.Empty;
         public DateTime Birthday { get; set; } = DateTime.MinValue;
@@ -19,7 +19,7 @@ namespace SecurityGuard.Domain.Models
 
         public override string ToString()
         {
-            return $"{FirstName} + \" \" +{LastName} + \" \" + {Patronomic}";
+            return FirstName +" " + LastName;
         }
     }
 }
