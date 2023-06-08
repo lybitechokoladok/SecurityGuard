@@ -30,7 +30,8 @@ namespace SecurityGuard.WPF.Services
 
             return new UserDto
             {
-
+                UsertName = username,
+                Password = password,
             };
         }
 

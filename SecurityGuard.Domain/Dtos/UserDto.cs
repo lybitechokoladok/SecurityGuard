@@ -8,5 +8,7 @@ namespace SecurityGuard.Domain.Dtos
 {
     public class UserDto
     {
+        public string UsertName { get; set; }
+        public string Password { get; set; }
     }
 }
