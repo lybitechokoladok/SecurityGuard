@@ -1,8 +1,14 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MVVMEssentials.Services;
 using MVVMEssentials.Stores;
 using MVVMEssentials.ViewModels;
+using SecurityGuard.Domain.Abstractions;
+using SecurityGuard.Domain.Repositories;
+using SecurityGuard.Domain.Services;
+using SecurityGuard.Infrastructure;
+using SecurityGuard.Infrastructure.Repositories;
 using SecurityGuard.WPF.Services;
 using SecurityGuard.WPF.ViewModels;
 using System;
@@ -33,8 +39,14 @@ namespace SecurityGuard.WPF
                      serviceCollection.AddSingleton<INavigationService>(s => CreateLoginNavigationService(s));
                      serviceCollection.AddSingleton<CloseModalNavigationService>();
 
+                     serviceCollection.AddSingleton<DbConnection>();
+                     serviceCollection.AddSingleton<IUserRepository,UserRepository > ();
+                     serviceCollection.AddSingleton<IAccountService, AccountService>();
+                     serviceCollection.AddSingleton<IPasswordHasher, PasswordHasher>();
+
                      serviceCollection.AddTransient<LoginViewModel>((s) => new LoginViewModel(
-                         CreateRequestListingNavigationService(s)));
+                         CreateRequestListingNavigationService(s),
+                         s.GetRequiredService<IAccountService>()));
                      serviceCollection.AddTransient<RequestListingViewModel>();
                      serviceCollection.AddTransient<NavigationBarViewModel>();
 

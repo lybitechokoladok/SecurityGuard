@@ -9,19 +9,15 @@ using System.Threading.Tasks;
 
 namespace SecurityGuard.Infrastructure
 {
-    public class DBContext
+    public class DbConnection
     {
-        private readonly IConfiguration _configuration;
+        private readonly string _connectionString = "Data Source=(local)\\SQLEXPRESS;Initial Catalog=SecurityGuard;Integrated Security=True; Trust Server Certificate= True";
 
-        public DBContext(IConfiguration config)
-        {
-            _configuration = config;
-        }
 
         public string GetConnectionString() 
         {
-            if (!string.IsNullOrWhiteSpace(_configuration.GetConnectionString("default")))
-                return _configuration.GetConnectionString("default");
+            if (!string.IsNullOrWhiteSpace(_connectionString))
+                return _connectionString;
             else
                 throw new Exception();
         }

@@ -12,9 +12,9 @@ namespace SecurityGuard.Infrastructure.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly DBContext _context;
+        private readonly DbConnection _context;
 
-        public UserRepository(DBContext context)
+        public UserRepository(DbConnection context)
         {
             _context = context;
         }
@@ -24,7 +24,7 @@ namespace SecurityGuard.Infrastructure.Repositories
             using (IDbConnection connection = new SqlConnection(_context.GetConnectionString()))
             {
                await connection.ExecuteAsync("Insert into [User] " +
-                                                 "values(@Id, @FirstName, @LastName, @Patronomic, @JobTitle,@Birthday, @HashedPassword )",
+                                                 "values(@Id, @FirstName, @LastName, @Patronomic, @JobTitle,@Birthday,@Username,  @HashedPassword )",
                    new { entity });
             }
         }

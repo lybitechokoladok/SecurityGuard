@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SecurityGuard.Domain\SecurityGuard.Domain.csproj" />
+    <ProjectReference Include="..\SecurityGuard.Infrastructure\SecurityGuard.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

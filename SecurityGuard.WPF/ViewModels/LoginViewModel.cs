@@ -1,5 +1,6 @@
 ﻿using MVVMEssentials.Services;
 using MVVMEssentials.ViewModels;
+using SecurityGuard.Domain.Services;
 using SecurityGuard.WPF.Commands;
 using System;
 using System.Collections.Generic;
@@ -44,9 +45,9 @@ namespace SecurityGuard.WPF.ViewModels
         public ICommand RemeberMeCommand { get; }
         public ICommand ForgotPasswordCommand { get; }
 
-        public LoginViewModel(INavigationService loginNavigationService)
+        public LoginViewModel(INavigationService loginNavigationService, IAccountService accountService)
         {
-            LoginCommand = new LoginCommand(loginNavigationService, this);
+            LoginCommand = new LoginCommand(loginNavigationService, this, accountService);
         }
     }
 }
