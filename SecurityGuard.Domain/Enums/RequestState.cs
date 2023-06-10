@@ -8,9 +8,9 @@ namespace SecurityGuard.Domain.Enums
 {
     public enum RequestState
     {
-        New = 0,
-        Approved = 1,
-        InProcess = 2,
-        Closed = 3
+        New = 1,
+        Approved = 2,
+        InProcess = 3,
+        Closed = 4
     }
 }

@@ -35,7 +35,7 @@ namespace SecurityGuard.WPF.Services
             };
         }
 
-        public async Task<UserDto> RegisterAsunc(string username, string password)
+        public async Task<UserDto> RegisterAsync(string username, string password)
         {
             var passwordHash = _passwordHasher.Hash(password);
 
