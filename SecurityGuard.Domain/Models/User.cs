@@ -11,7 +11,7 @@ namespace SecurityGuard.Domain.Models
         public int Id { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
-        public string JobTitle { get; set; } = string.Empty;
+        public int JobTitle { get; set; } 
         public DateTime Birthday { get; set; } = DateTime.MinValue;
         public string Username { get; set; } = string.Empty;
         public string HashedPassword { get; set; } = string.Empty;
