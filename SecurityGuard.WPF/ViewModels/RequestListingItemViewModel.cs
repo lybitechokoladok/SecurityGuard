@@ -22,3 +22,4 @@ namespace SecurityGuard.WPF.ViewModels
             ArrivalDate = arrivalDate;
         }
     }
+}
