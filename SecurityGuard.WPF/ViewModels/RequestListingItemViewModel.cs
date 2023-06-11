@@ -13,13 +13,11 @@ namespace SecurityGuard.WPF.ViewModels
         public string FullName { get; set; }
 
 
-        public DateTime ArrivalDate { get; set; }
 
-        public RequestListingItemViewModel(int requestNumber, string fullName, DateTime arrivalDate)
+        public RequestListingItemViewModel(int requestNumber, string fullName)
         {
             RequestNumber = requestNumber;
             FullName = fullName;
-            ArrivalDate = arrivalDate;
         }
     }
 }
