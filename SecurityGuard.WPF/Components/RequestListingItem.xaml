@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="SecurityGuard.WPF.Components.RequestListingItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SecurityGuard.WPF.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Padding="10" 
+            TextBlock.FontSize="16"
+            Background="#323D4B"
+            CornerRadius="10"
+            TextBlock.Foreground="#d9d9d9"
+            Margin="0 10 0 0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Grid.Column="0"
+                Text="{Binding RequestNumber}"/>
+
+            <TextBlock
+                Margin="110 0 0 0"
+                Grid.Column="1"
+                Text="{Binding FullName}"/>
+
+            <TextBlock
+                Grid.Column="2"
+                Text="{Binding ArrivalDate}"/>
+
+            <Button
+                Grid.Column="3"
+                Content="Детальная информация"
+                HorizontalAlignment="Right"
+                Foreground="#d9d9d9"
+                Background="#323D4B"
+                HorizontalContentAlignment="Center"/>
+        </Grid>
+    </Border>
+</UserControl>
