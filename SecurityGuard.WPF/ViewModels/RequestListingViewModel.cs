@@ -18,7 +18,7 @@ namespace SecurityGuard.WPF.ViewModels
         {
             _requestListingItemViewModels = new ObservableCollection<RequestListingItemViewModel>();
 
-            _requestListingItemViewModels.Add(new RequestListingItemViewModel(1,"123"));
+            _requestListingItemViewModels.Add(new RequestListingItemViewModel(1,"123", DateTime.UtcNow));
         }
     }
 }
