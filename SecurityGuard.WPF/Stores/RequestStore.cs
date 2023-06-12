@@ -23,10 +23,10 @@ namespace SecurityGuard.WPF.Stores
             _requests = new List<Request>();
         }
 
-        public async  Task Load() 
+        public async Task  Load() 
         {
             IEnumerable<Request> requests = await _requestRepository.GetAllListAsync();
-            
+
             _requests.Clear();
             _requests.AddRange(requests);
 

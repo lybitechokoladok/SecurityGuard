@@ -1,6 +1,7 @@
 ﻿using MVVMEssentials.ViewModels;
 using SecurityGuard.Domain.Enums;
 using SecurityGuard.Domain.Models;
+using SecurityGuard.WPF.Commands;
 using SecurityGuard.WPF.Stores;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace SecurityGuard.WPF.ViewModels
 {
@@ -33,6 +35,7 @@ namespace SecurityGuard.WPF.ViewModels
             }
         }
 
+        public ICommand LoadRequestsCommand { get; }
 
         public RequestListingViewModel(RequestStore requestStore)
         {
@@ -42,6 +45,8 @@ namespace SecurityGuard.WPF.ViewModels
 
             RequestCollectionView.Filter = FilterRequest;
 
+            LoadRequestsCommand = new LoadRequestsCommand(this, requestStore);
+            LoadRequestsCommand.Execute(null);
 
             _requestStore.RequestsLoaded += OnRequestLoaded;
 

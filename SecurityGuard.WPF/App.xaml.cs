@@ -42,15 +42,16 @@ namespace SecurityGuard.WPF
                      serviceCollection.AddSingleton<CloseModalNavigationService>();
 
                      serviceCollection.AddSingleton<DbConnection>();
-                     serviceCollection.AddSingleton<IUserRepository,UserRepository > ();
-                     serviceCollection.AddSingleton<IRequestRepository, RequestRepository>();
-                     serviceCollection.AddSingleton<IAccountService, AccountService>();
-                     serviceCollection.AddSingleton<IPasswordHasher, PasswordHasher>();
+                     serviceCollection.AddScoped<IUserRepository,UserRepository > ();
+                     serviceCollection.AddScoped<IRequestRepository, RequestRepository>();
+                     serviceCollection.AddScoped<IAccountService, AccountService>();
+                     serviceCollection.AddScoped<IPasswordHasher, PasswordHasher>();
 
                      serviceCollection.AddTransient<LoginViewModel>((s) => new LoginViewModel(
                          CreateRequestListingNavigationService(s),
                          s.GetRequiredService<IAccountService>()));
-                     serviceCollection.AddTransient<RequestListingViewModel>();
+                     serviceCollection.AddTransient<RequestListingViewModel>(s => new RequestListingViewModel(
+                         s.GetRequiredService<RequestStore>()));
                      serviceCollection.AddTransient<NavigationBarViewModel>();
 
                      serviceCollection.AddSingleton<MainViewModel>();

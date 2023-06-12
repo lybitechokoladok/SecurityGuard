@@ -22,14 +22,17 @@ namespace SecurityGuard.Infrastructure.Repositories
         {
             using (IDbConnection connection = new SqlConnection(_connection.GetConnectionString()))
             {
-                return await connection.QueryAsync<Request, Client, Request>(@"Select * from [Request] r
-                                                              left join [Client] c
-                                                              on r.ClientId = c.Id",
-                                                              (request, client) => 
-                                                              {
-                                                                  request.ClientId = client;
-                                                                  return request;
-                                                              });
+                var sql = @"Select * from [Request] r
+                            left join [Client] c
+                            on r.ClientId = c.Id";
+
+               var requests = await connection.QueryAsync<Request, Client, Request>(sql, (request, client) => 
+               {
+                   request.Client = client;
+                   return request;
+               });
+
+                return requests;
             }
         }
 
