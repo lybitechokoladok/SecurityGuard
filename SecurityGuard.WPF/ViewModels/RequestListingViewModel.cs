@@ -24,6 +24,14 @@ namespace SecurityGuard.WPF.ViewModels
 
         private string _requestFilter = string.Empty;
 
+        public int RequestCount 
+        {
+            get => _requestListingItemViewModels.Count;
+            set 
+            {
+                OnPropertyChanged(nameof(RequestCount));
+            } 
+        }
         public string RequestFilter
         {
             get { return _requestFilter; }
@@ -42,6 +50,7 @@ namespace SecurityGuard.WPF.ViewModels
             _requestStore = requestStore;
             _requestListingItemViewModels = new ObservableCollection<RequestListingItemViewModel>();
             RequestCollectionView = CollectionViewSource.GetDefaultView(_requestListingItemViewModels);
+            RequestCollectionView.GroupDescriptions.Add(new PropertyGroupDescription(nameof(RequestListingItemViewModel.RequestType)));
 
             RequestCollectionView.Filter = FilterRequest;
 
@@ -61,6 +70,8 @@ namespace SecurityGuard.WPF.ViewModels
             {
                 AddRequest(request);
             }
+
+            RequestCount = _requestListingItemViewModels.Count;
         }
 
         private void AddRequest(Request request)

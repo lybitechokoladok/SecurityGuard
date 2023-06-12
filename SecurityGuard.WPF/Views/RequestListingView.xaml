@@ -83,7 +83,6 @@
                Foreground="#d9d9d9"/>
 
                 <ComboBox
-                    Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
                     Foreground="white"
                     Height="30" Width="120"
                     FontSize="16"
@@ -112,7 +111,7 @@
                 FontSize="20">
                 <Run Text="Заявки"/>
                 <Run Text="("/>
-                <Run Text="{Binding ItemsCount}"/>
+                <Run Text="{Binding RequestCount}"/>
                 <Run Text=")"/>
             </TextBlock>
         </StackPanel>

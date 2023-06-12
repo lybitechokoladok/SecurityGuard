@@ -12,6 +12,8 @@ namespace SecurityGuard.WPF.ViewModels
         public Request Request { get; private set; }
         public int RequestNumber => Request.Id; 
 
+        public string RequestType => Request.Type;
+
         public string FullName => Request.ToString();
 
         public DateTime ArrivalDate => Request.ArrivaDate;

@@ -18,7 +18,7 @@ namespace SecurityGuard.Domain.Models
 
         public override string ToString()
         {
-            return Client.FirstName + " " + Client.LastName + " " + Client.Patronomic;
+            return Client.FirstName + " " + Client.LastName + " " + Client.Patronomic + "";
         }
     }
 }
