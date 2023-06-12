@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SecurityGuard.WPF.Services
 {
@@ -23,16 +24,27 @@ namespace SecurityGuard.WPF.Services
         public async Task<UserDto> LoginAsync(string username, string password)
         {
             var user = await _userRepository.GetUserByUsernameAsync(username);
-            var passwordIsValid = _passwordHasher.HashesMatch(user.HashedPassword, password);
-
-            if (!passwordIsValid)
-                throw new Exception();
-
-            return new UserDto
+            if (user == null)
             {
-                UsertName = username,
-                Password = password,
-            };
+                MessageBox.Show("Такого пользователя не неайдено");
+                throw new Exception();
+            }
+            else
+            {
+                var passwordIsValid = _passwordHasher.HashesMatch(user.HashedPassword, password);
+
+                if (!passwordIsValid)
+                {
+                    MessageBox.Show("Не верный пароль");
+                    throw new Exception();
+                }
+            }
+                return new UserDto
+                {
+                    UsertName = username,
+                    Password = password,
+                };
+            
         }
 
         public async Task<UserDto> RegisterAsync(string username, string password)
