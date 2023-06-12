@@ -1,4 +1,6 @@
 ﻿using MVVMEssentials.ViewModels;
+using SecurityGuard.Domain.Models;
+using SecurityGuard.WPF.Stores;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,6 +15,7 @@ namespace SecurityGuard.WPF.ViewModels
     public class RequestListingViewModel : ViewModelBase
     {
         private readonly ObservableCollection<RequestListingItemViewModel> _requestListingItemViewModels;
+        private readonly RequestStore _requestStore;
 
         public ICollectionView RequestCollectionView { get; }
 
@@ -30,20 +33,34 @@ namespace SecurityGuard.WPF.ViewModels
         }
 
 
-        public RequestListingViewModel()
+        public RequestListingViewModel(RequestStore requestStore)
         {
             _requestListingItemViewModels = new ObservableCollection<RequestListingItemViewModel>();
             RequestCollectionView = CollectionViewSource.GetDefaultView(_requestListingItemViewModels);
 
             RequestCollectionView.Filter = FilterRequest;
 
-            _requestListingItemViewModels.Add(new RequestListingItemViewModel(1,"123", DateTime.UtcNow));
-            _requestListingItemViewModels.Add(new RequestListingItemViewModel(1,"Nick", DateTime.UtcNow));
-            _requestListingItemViewModels.Add(new RequestListingItemViewModel(1,"Andrew", DateTime.UtcNow));
-            _requestListingItemViewModels.Add(new RequestListingItemViewModel(1,"Dima", DateTime.UtcNow));
-            _requestListingItemViewModels.Add(new RequestListingItemViewModel(1,"Nick", DateTime.UtcNow));
-            _requestListingItemViewModels.Add(new RequestListingItemViewModel(1,"Shon", DateTime.UtcNow));
-            _requestListingItemViewModels.Add(new RequestListingItemViewModel(1,"Dmitry", DateTime.UtcNow));
+            _requestStore = requestStore;
+
+            _requestStore.RequestsLoaded += OnRequestLoaded;
+
+        }
+
+        private void OnRequestLoaded()
+        {
+            _requestListingItemViewModels.Clear();
+
+            foreach (Request request in _requestStore.Requests) 
+            {
+                AddRequest(request);
+            }
+        }
+
+        private void AddRequest(Request request)
+        {
+            RequestListingItemViewModel itemViewModel = 
+                new RequestListingItemViewModel(request);
+            _requestListingItemViewModels.Add(itemViewModel);
         }
 
         private bool FilterRequest(object obj)
@@ -54,6 +71,13 @@ namespace SecurityGuard.WPF.ViewModels
             }
 
             return false;
+        }
+
+        public override void Dispose()
+        {
+            _requestStore.RequestsLoaded -= OnRequestLoaded;
+
+            base.Dispose();
         }
     }
 }
