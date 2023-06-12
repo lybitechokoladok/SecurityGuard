@@ -10,6 +10,7 @@ using SecurityGuard.Domain.Services;
 using SecurityGuard.Infrastructure;
 using SecurityGuard.Infrastructure.Repositories;
 using SecurityGuard.WPF.Services;
+using SecurityGuard.WPF.Stores;
 using SecurityGuard.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,7 @@ namespace SecurityGuard.WPF
                  {
                      serviceCollection.AddSingleton<NavigationStore>();
                      serviceCollection.AddSingleton<ModalNavigationStore>();
+                     serviceCollection.AddSingleton<RequestStore>();
                      serviceCollection.AddSingleton<INavigationService>(s => CreateLoginNavigationService(s));
                      serviceCollection.AddSingleton<CloseModalNavigationService>();
 
