@@ -16,7 +16,7 @@ namespace SecurityGuard.WPF.ViewModels
 
         public string FullName => Request.ToString();
 
-        public DateTime ArrivalDate => Request.ArrivaDate;
+        public DateTime ArrivalDate => Request.ArrivalDate;
 
         public RequestListingItemViewModel(Request request)
         {

@@ -22,16 +22,32 @@ namespace SecurityGuard.WPF.ViewModels
 
         public ICollectionView RequestCollectionView { get; }
 
-        private string _requestFilter = string.Empty;
-
+        private int _requestCount;
         public int RequestCount 
         {
-            get => _requestListingItemViewModels.Count;
+            get => _requestCount;
             set 
             {
+                _requestCount = value;
                 OnPropertyChanged(nameof(RequestCount));
             } 
         }
+
+        private string _requestType;
+
+        public string RequestType
+        {
+            get { return _requestType; }
+            set 
+            {
+                _requestType = value;
+                OnPropertyChanged(RequestType);
+                RequestCollectionView.Refresh();
+            }
+        }
+
+
+        private string _requestFilter = string.Empty;
         public string RequestFilter
         {
             get { return _requestFilter; }
@@ -85,7 +101,7 @@ namespace SecurityGuard.WPF.ViewModels
         {
             if(obj is RequestListingItemViewModel request) 
             {
-                return request.FullName.Contains(RequestFilter);
+                return request.FullName.Contains(RequestFilter, StringComparison.InvariantCultureIgnoreCase);
             }
 
             return false;

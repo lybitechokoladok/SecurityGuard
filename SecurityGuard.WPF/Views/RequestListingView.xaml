@@ -50,11 +50,12 @@
                     Foreground="#d9d9d9"/>
 
                 <ComboBox
-                    Foreground="White"
+                    Foreground="Black"
                     Height="30" Width="120"
                     FontSize="16"
                     VerticalContentAlignment="Center"
                     IsReadOnly="True"
+                    SelectedItem="{Binding RequestType}"
                     Text="Выберите тип заявки"
                     Background="#323D4B"
                     BorderThickness="0">
@@ -83,8 +84,8 @@
                Foreground="#d9d9d9"/>
 
                 <ComboBox
-                    Foreground="white"
-                    Height="30" Width="120"
+                    Foreground="Black"
+                    Height="30" Width="150"
                     FontSize="16"
                     VerticalContentAlignment="Center"
                     Background="#323D4B"
