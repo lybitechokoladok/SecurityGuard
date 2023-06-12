@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SecurityGuard.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,17 +9,16 @@ namespace SecurityGuard.WPF.ViewModels
 {
     public class RequestListingItemViewModel
     {
-        public int RequestNumber { get; set; }
+        public Request Request { get; private set; }
+        public int RequestNumber => Request.Id; 
 
-        public string FullName { get; set; }
+        public string FullName => Request.ToString();
 
-        public DateTime ArrivalDate { get; set; }
+        public DateTime ArrivalDate => Request.ArrivaDate;
 
-        public RequestListingItemViewModel(int requestNumber, string fullName, DateTime arrivalDate)
+        public RequestListingItemViewModel(Request request)
         {
-            RequestNumber = requestNumber;
-            FullName = fullName;
-            ArrivalDate = arrivalDate;
+            Request = request;
         }
     }
 }

@@ -15,5 +15,10 @@ namespace SecurityGuard.Domain.Models
         public DateTime CreationDate { get; set; }
         public Client ClientId { get; set; }
         public MembersGroup? GroupId { get; set; }
+
+        public override string ToString()
+        {
+            return ClientId.FirstName + " " + ClientId.LastName + " " + ClientId.Patronomic;
+        }
     }
 }
