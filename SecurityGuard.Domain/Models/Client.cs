@@ -16,7 +16,5 @@ namespace SecurityGuard.Domain.Models
         public string Phone { get;set; } = string.Empty;
         public string PasswordNumber { get; set; } = string.Empty;
         public string PasswordSeries { get;set; } = string.Empty;
-
-        public ICollection<Request> Requests { get; set; }
     }
 }

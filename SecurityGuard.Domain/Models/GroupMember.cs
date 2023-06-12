@@ -14,6 +14,6 @@ namespace SecurityGuard.Domain.Models
         public string Patronomic { get; set; } = string.Empty;
         public string Phone { get; set; } = string.Empty;
 
-        public MembersGroup Group { get; set; }
+        public MembersGroup GroupId { get; set; }
     }
 }

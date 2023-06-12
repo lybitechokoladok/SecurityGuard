@@ -13,7 +13,7 @@ namespace SecurityGuard.Domain.Models
         public string VisitingReason { get; set; } = string.Empty;
         public DateTime ArrivaDate { get; set; }
         public DateTime CreationDate { get; set; }
-        public Client Client { get; set; }
-        public MembersGroup? MembersGroup { get; set; }
+        public Client ClientId { get; set; }
+        public MembersGroup? GroupId { get; set; }
     }
 }

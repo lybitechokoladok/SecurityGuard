@@ -12,6 +12,6 @@ namespace SecurityGuard.Domain.Models
         public Request Request { get; set; }
         public int RequestStateId { get; set; }
         public DateTime RequestTimesatmp { get; set; }
-        public User User { get; set; }
+        public User UserId { get; set; }
     }
 }

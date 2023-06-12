@@ -11,6 +11,6 @@ namespace SecurityGuard.Domain.Models
         public int Id { get; set; }
         public string Reason { get; set; } = string.Empty;
         public DateTime DateAdded { get; set; } 
-        public Client Client { get; set; }
+        public Client ClientId { get; set; }
     }
 }
