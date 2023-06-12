@@ -115,10 +115,6 @@
                 <Run Text="{Binding ItemsCount}"/>
                 <Run Text=")"/>
             </TextBlock>
-
-            <Button
-                Content="Load"
-                Command="{Binding LoadRequestsCommand}"/>
         </StackPanel>
 
         <StackPanel
