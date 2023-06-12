@@ -1,4 +1,5 @@
 ﻿using MVVMEssentials.ViewModels;
+using SecurityGuard.Domain.Enums;
 using SecurityGuard.Domain.Models;
 using SecurityGuard.WPF.Stores;
 using System;
@@ -35,16 +36,17 @@ namespace SecurityGuard.WPF.ViewModels
 
         public RequestListingViewModel(RequestStore requestStore)
         {
+            _requestStore = requestStore;
             _requestListingItemViewModels = new ObservableCollection<RequestListingItemViewModel>();
             RequestCollectionView = CollectionViewSource.GetDefaultView(_requestListingItemViewModels);
 
             RequestCollectionView.Filter = FilterRequest;
 
-            _requestStore = requestStore;
 
             _requestStore.RequestsLoaded += OnRequestLoaded;
 
         }
+
 
         private void OnRequestLoaded()
         {
