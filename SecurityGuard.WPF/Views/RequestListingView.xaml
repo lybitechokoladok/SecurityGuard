@@ -115,6 +115,9 @@
                 <Run Text="{Binding RequestCount}"/>
                 <Run Text=")"/>
             </TextBlock>
+            <Button
+                Content="Test"
+                Command="{Binding OpenRequestDetailCommand}"/>
         </StackPanel>
 
         <StackPanel

@@ -1,4 +1,6 @@
-﻿using MVVMEssentials.ViewModels;
+﻿using MVVMEssentials.Commands;
+using MVVMEssentials.Services;
+using MVVMEssentials.ViewModels;
 using SecurityGuard.Domain.Enums;
 using SecurityGuard.Domain.Models;
 using SecurityGuard.WPF.Commands;
@@ -62,7 +64,7 @@ namespace SecurityGuard.WPF.ViewModels
         public ICommand OpenRequestDetailCommand { get; }
         public ICommand LoadRequestsCommand { get; }
 
-        public RequestListingViewModel(RequestStore requestStore)
+        public RequestListingViewModel(RequestStore requestStore, INavigationService openRequestDetailNavigationService)
         {
             _requestStore = requestStore;
             _requestListingItemViewModels = new ObservableCollection<RequestListingItemViewModel>();
@@ -71,6 +73,7 @@ namespace SecurityGuard.WPF.ViewModels
 
             RequestCollectionView.Filter = FilterRequest;
 
+            OpenRequestDetailCommand = new NavigateCommand(openRequestDetailNavigationService);
             LoadRequestsCommand = new LoadRequestsCommand(this, requestStore);
             LoadRequestsCommand.Execute(null);
 

@@ -7,6 +7,7 @@
         xmlns:views="clr-namespace:SecurityGuard.WPF.Views"
         xmlns:vms="clr-namespace:SecurityGuard.WPF.ViewModels"
         xmlns:components="clr-namespace:SecurityGuard.WPF.Components"
+        xmlns:custom="clr-namespace:ModalControl;assembly=ModalControl"
         mc:Ignorable="d"
         Title="Security Guard" Height="850" Width="1550"
         WindowStartupLocation="CenterScreen"
@@ -26,8 +27,15 @@
             <DataTemplate DataType="{x:Type vms:RequestListingViewModel}">
                 <views:RequestListingView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:RequestDetailViewModel}">
+                <views:RequestDetailView/>
+            </DataTemplate>
         </Grid.Resources>
 
+        <custom:Modal Panel.ZIndex="1" IsOpen="{Binding IsOpen}">
+            <ContentControl Content="{Binding CurrentModalViewModel}"/>
+        </custom:Modal>
+        
         <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>
