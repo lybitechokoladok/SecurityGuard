@@ -59,6 +59,7 @@ namespace SecurityGuard.WPF.ViewModels
             }
         }
 
+        public ICommand OpenRequestDetailCommand { get; }
         public ICommand LoadRequestsCommand { get; }
 
         public RequestListingViewModel(RequestStore requestStore)
