@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace SecurityGuard.WPF.ViewModels
 {
@@ -18,9 +19,11 @@ namespace SecurityGuard.WPF.ViewModels
 
         public DateTime ArrivalDate => Request.ArrivalDate;
 
-        public RequestListingItemViewModel(Request request)
+        public ICommand OpenRequestDetailCommand { get; }
+        public RequestListingItemViewModel(Request request, ICommand openRequestDetailCommand)
         {
             Request = request;
+            OpenRequestDetailCommand = openRequestDetailCommand;
         }
     }
 }

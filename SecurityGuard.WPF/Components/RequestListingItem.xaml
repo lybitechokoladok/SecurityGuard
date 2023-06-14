@@ -39,7 +39,8 @@
                 HorizontalAlignment="Right"
                 Foreground="#d9d9d9"
                 Background="#323D4B"
-                HorizontalContentAlignment="Center"/>
+                HorizontalContentAlignment="Center"
+                Command="{Binding OpenRequestDetailCommand}"/>
         </Grid>
     </Border>
 </UserControl>

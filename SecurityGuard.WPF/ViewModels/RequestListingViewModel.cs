@@ -97,7 +97,7 @@ namespace SecurityGuard.WPF.ViewModels
         private void AddRequest(Request request)
         {
             RequestListingItemViewModel itemViewModel = 
-                new RequestListingItemViewModel(request);
+                new RequestListingItemViewModel(request, OpenRequestDetailCommand);
             _requestListingItemViewModels.Add(itemViewModel);
         }
 
