@@ -31,11 +31,6 @@
                     Padding="10 0 0 0"
                     Background="#323D4B"
                     BorderThickness="0">
-                <TextBox.Effect>
-                    <DropShadowEffect
-                        BlurRadius="5"
-                        ShadowDepth="1"/>
-                </TextBox.Effect>
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="2"/>
@@ -53,17 +48,19 @@
                     Foreground="#d9d9d9"/>
 
                 <ComboBox
-                    Height="30" Width="120"
+                    Height="30" Width="190"
                     Style="{StaticResource ComboBoxFlatStyle}"
                     VerticalContentAlignment="Center"
-                    IsReadOnly="True">
+                    IsEditable="True"
+                    IsReadOnly="True"
+                    Text="Выберите тип заявки">
 
                     <ComboBoxItem
-                        Content="Одиночная"
-                        Background="#323D4B"/>
+                        HorizontalContentAlignment="Center"
+                        Content="Одиночная"/>
                     <ComboBoxItem
-                        Content="Групповая"
-                        Background="#323D4B"/>
+                        HorizontalContentAlignment="Center"
+                        Content="Групповая"/>
                 </ComboBox>
             </StackPanel>
 
@@ -77,24 +74,18 @@
                Foreground="#d9d9d9"/>
 
                 <ComboBox
-                    Foreground="Black"
-                    Height="30" Width="150"
-                    FontSize="16"
-                    VerticalContentAlignment="Center"
-                    Background="#323D4B"
-                    BorderThickness="0">
-                    <ComboBox.Effect>
-                        <DropShadowEffect
-                            BlurRadius="5"
-                            ShadowDepth="1"/>
-                    </ComboBox.Effect>
+                    Height="30" Width="180"
+                    Style="{StaticResource ComboBoxFlatStyle}"
+                    IsEditable="True"
+                    IsReadOnly="True"
+                    Text="Выберите из списка">
 
                     <ComboBoxItem
-                        Content="По возрастанию"
-                        Background="#323D4B"/>
+                        HorizontalContentAlignment="Center"
+                        Content="По возрастанию"/>
                     <ComboBoxItem
-                        Content="По убыванию"
-                        Background="#323D4B"/>
+                        HorizontalContentAlignment="Center"
+                        Content="По убыванию"/>
                 </ComboBox>
             </StackPanel>
 

@@ -5,98 +5,101 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SecurityGuard.WPF.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#1C2530">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        <StackPanel
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="#1C2530">
+    <Border Padding="15">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel
             Grid.Row="0"
             Orientation="Vertical">
-            <TextBlock>
+                <TextBlock>
                 <Run Text="Id: "/>
                 <Run Text="{Binding Id}"/>
-            </TextBlock>
-            <TextBlock>
+                </TextBlock>
+                <TextBlock>
                 <Run Text="ФИО: "/>
                 <Run Text="{Binding FullName}"/>
-            </TextBlock>
-            <TextBlock>
+                </TextBlock>
+                <TextBlock>
                 <Run Text="Дата прибытия: "/>
                 <TextBox Text="{Binding Id}"
                          Width="200"
                          Margin="20 0 0 0"/>
-            </TextBlock>
-        </StackPanel>
+                </TextBlock>
+            </StackPanel>
 
-        <StackPanel
+            <StackPanel
             Grid.Row="1"
             Margin="0 100 0 0"
             Orientation="Vertical">
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
 
-                <TextBlock
+                    <TextBlock
                     Grid.Column="0"
                     Foreground="#d9d9d9"
                     FontSize="14"
                     Text="ФИО участника группы"/>
-                <TextBlock
+                    <TextBlock
                     Grid.Column="1"
                     Foreground="#d9d9d9"
                     FontSize="14"
                     Text="Телефон"/>
-                <TextBlock
+                    <TextBlock
                     Grid.Column="2"
                     Foreground="#d9d9d9"
                     FontSize="14"
                     Text="Организация"/>
-            </Grid>
-        </StackPanel>
+                </Grid>
+            </StackPanel>
 
-        <ListView
+            <ListView
                 Grid.Row="2"
                 Background="Transparent"
                 BorderThickness="0"
                 Margin="0 10 0 0"
                 ItemsSource="{Binding Clients}">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                <ContentPresenter />
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListView.ItemContainerStyle>
-        </ListView>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
 
-        <DockPanel
+            <DockPanel
             Grid.Row="3"
             Margin="10">
-            <Button
+                <Button
                 Content="Одобрить"
                 Foreground="Black"
-                Height="30" Width="200"
+                Height="40" Width="100"
                 HorizontalAlignment="Left"/>
-            <Button
+                <Button
                 Content="Отмена"
-                Height="40" Width="200"
+                Height="40" Width="100"
                 Foreground="Black"
                 HorizontalAlignment="Right"
                 Command="{Binding CloseRequestDetailCommand}"/>
-        </DockPanel>
-    </Grid>
+            </DockPanel>
+        </Grid>
+    </Border>
 </UserControl>
