@@ -7,6 +7,7 @@
         <Style TargetType="Button">
             <Setter Property="Padding" Value="10 5"/>
             <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="FontFamily" Value="Montserrat"/>
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -15,7 +16,8 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="5" Background="{TemplateBinding Background}"
+                        <Border CornerRadius="5" 
+                                Background="{TemplateBinding Background}"
                                 Padding="{TemplateBinding Padding}"
                                 Margin="{TemplateBinding Margin}">
                             <ContentPresenter HorizontalAlignment="Center"
@@ -31,7 +33,7 @@
                         <BeginStoryboard>
                             <Storyboard>
                                 <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
-                                    To="#73390f" Duration="0:0:0.1"/>
+                                    To="#CE6315" Duration="0:0:0.1"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.EnterActions>
@@ -39,12 +41,23 @@
                         <BeginStoryboard>
                             <Storyboard>
                                 <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
-                                    To="#CE6315" Duration="0:0:0.1"/>
+                                    To="Transparent" Duration="0:0:0.1"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.ExitActions>
                 </Trigger>
             </Style.Triggers>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#d9d9d9"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Montserrat"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Monteserrat"/>
+            <Setter Property="FontSize" Value="16"/>
         </Style>
 
         <Style x:Key="menuButton" TargetType="RadioButton">
