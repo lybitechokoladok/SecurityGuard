@@ -35,19 +35,6 @@ namespace SecurityGuard.WPF.ViewModels
             } 
         }
 
-        private string _requestType;
-
-        public string RequestType
-        {
-            get { return _requestType; }
-            set 
-            {
-                _requestType = value;
-                OnPropertyChanged(RequestType);
-                RequestCollectionView.Refresh();
-            }
-        }
-
 
         private string _requestFilter = string.Empty;
         public string RequestFilter
