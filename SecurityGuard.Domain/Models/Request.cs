@@ -16,6 +16,8 @@ namespace SecurityGuard.Domain.Models
         public Client Client { get; set; }
         public int? GroupId { get; set; }
 
+        public RequestDetails RequestDetails { get; set; }
+
         public override string ToString()
         {
             return Client.FirstName + " " + Client.LastName + " " + Client.Patronomic;

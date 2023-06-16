@@ -26,12 +26,15 @@ namespace SecurityGuard.Infrastructure.Repositories
                             left join [Client] c
                             on r.ClientId = c.Id
                             left join [RequestType] rt
-							on r.RequestTypeId = rt.Id";
+							on r.RequestTypeId = rt.Id
+                            left join [RequestDetails] rd
+							on r.RequestDetailId = rd.Id";
 
-               var requests = await connection.QueryAsync<Request, Client,RequestType, Request>(sql, (request, client, requestType) => 
+               var requests = await connection.QueryAsync<Request, Client,RequestType,RequestDetails, Request>(sql, (request, client, requestType, requestDetail) => 
                {
                    request.Client = client;
                    request.Type = requestType;
+                   request.RequestDetails = requestDetail;
                    return request;
                });
 
