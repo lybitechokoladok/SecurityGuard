@@ -33,7 +33,15 @@ namespace SecurityGuard.Infrastructure.Repositories
         {
             using (IDbConnection connection = new SqlConnection(_context.GetConnectionString()))
             {
-                return await connection.QueryAsync<User>("Select * From [User]");
+                var sql = @"Select * From [User] u 
+                            inner join [JobTitle] jt
+                            on u.JobTitleId = jt.Id";
+
+                return await connection.QueryAsync<User, JobTitle, User>(sql, (user, jobTitle) => 
+                {
+                    user.JobTitle = jobTitle;
+                    return user;
+                });
             }
         }
 
@@ -50,8 +58,17 @@ namespace SecurityGuard.Infrastructure.Repositories
         {
             using (IDbConnection connection = new SqlConnection(_context.GetConnectionString()))
             {
-                return await connection.QueryFirstOrDefaultAsync<User>("Select * From [User] where Username = @username",
-                    new { username });
+
+                var sql = @"Select * From [User] u 
+                            inner join [JobTitle] jt
+                            on u.JobTitleId = jt.Id";
+                var users = await connection.QueryAsync<User, JobTitle, User>(sql, (user, jobTitle) => 
+                {
+                    user.JobTitle = jobTitle;
+                    return user;
+                });
+
+                return users.FirstOrDefault(p => p.Username == username);
             }
         }
        

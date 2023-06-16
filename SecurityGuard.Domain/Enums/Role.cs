@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SecurityGuard.Domain.Enums
 {
-    public enum JobTitle
+    public enum Role
     {
         GeneralDepartmentOfficer = 1,
         SecurityOfficer = 2
