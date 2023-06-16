@@ -13,7 +13,7 @@ namespace SecurityGuard.WPF.ViewModels
         public Request Request { get; private set; }
         public int RequestNumber => Request.Id; 
 
-        public string RequestType => Request.Type;
+        public string RequestType => Request.Type.Description;
 
         public string FullName => Request.ToString();
 

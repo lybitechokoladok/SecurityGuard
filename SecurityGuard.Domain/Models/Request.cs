@@ -9,7 +9,7 @@ namespace SecurityGuard.Domain.Models
     public class Request
     {
         public int Id { get; set; }
-        public string Type { get; set; }
+        public RequestType Type { get; set; }
         public string VisitingReason { get; set; } = string.Empty;
         public DateTime ArrivalDate { get; set; } 
         public DateTime CreationDate { get; set; }
