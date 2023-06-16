@@ -1,5 +1,5 @@
 ﻿using SecurityGuard.Domain.Enums;
-using SecurityGuard.Domain.Models;
+using SecurityGuard.Domain.Dtos;
 using System;
 using System.Linq;
 using System.Text;
@@ -9,8 +9,8 @@ namespace SecurityGuard.WPF.Stores
 {
     public class AccountStore
     {
-        private User _currentUser;
-        public User CurrentUser
+        private UserDto _currentUser;
+        public UserDto CurrentUser
         { 
             get { return _currentUser; }
             set 

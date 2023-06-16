@@ -3,6 +3,7 @@ using SecurityGuard.Domain.Dtos;
 using SecurityGuard.Domain.Models;
 using SecurityGuard.Domain.Repositories;
 using SecurityGuard.Domain.Services;
+using SecurityGuard.WPF.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,12 @@ namespace SecurityGuard.WPF.Services
     {
         private readonly IPasswordHasher _passwordHasher;
         private readonly IUserRepository _userRepository;
-        public AccountService(IPasswordHasher passwordHasher, IUserRepository userRepository)
+        private readonly AccountStore _accountStore;
+        public AccountService(IPasswordHasher passwordHasher, IUserRepository userRepository, AccountStore accountStore)
         {
             _passwordHasher = passwordHasher;
             _userRepository = userRepository;
+            _accountStore= accountStore;
         }
         public async Task<UserDto> LoginAsync(string username, string password)
         {
@@ -39,11 +42,16 @@ namespace SecurityGuard.WPF.Services
                     throw new Exception();
                 }
             }
-                return new UserDto
-                {
-                    UsertName = username,
-                    Password = password,
-                };
+
+
+            var currentUser = new UserDto
+            {
+                Username = username,
+                Password = password,
+                Role = user.JobTitle.Id
+            };
+            _accountStore.CurrentUser = currentUser;
+            return currentUser;
             
         }
 

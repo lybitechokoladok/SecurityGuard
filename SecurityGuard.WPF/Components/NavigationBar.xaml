@@ -8,6 +8,9 @@
              mc:Ignorable="d" 
              Background="#1C2530"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid Width="370"
           Margin="0 20 0 0">
         <Grid.RowDefinitions>
@@ -35,7 +38,9 @@
 
             <RadioButton Style="{DynamicResource menuButton}"
                          Tag="#d9d9d9"
-                         Margin="0 20 0 0">
+                         Margin="0 20 0 0"
+                         Visibility="{Binding IsGeneralDepartmentOfficer,
+                                              Converter={StaticResource BooleanToVisibilityConverter}}">
                 <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="Home" Style="{DynamicResource menuButtonIcon}"/>
                     <TextBlock Text="Заявки" Style="{DynamicResource menuButtonText}" Margin="10 0 0 0"/>
@@ -64,8 +69,16 @@
                          Tag="#d9d9d9"
                          Margin="0 20 0 0">
                 <StackPanel Orientation="Horizontal">
-                    <fa:IconImage Icon="Archive" Style="{DynamicResource menuButtonIcon}"/>
-                    <TextBlock Text="Архив" Style="{DynamicResource menuButtonText}" Margin="10 0 0 0"/>
+                    <fa:IconImage Icon="Ban" Style="{DynamicResource menuButtonIcon}"/>
+                    <TextBlock Text="Черный список" Style="{DynamicResource menuButtonText}" Margin="10 0 0 0"/>
+                </StackPanel>
+            </RadioButton>
+            <RadioButton Style="{DynamicResource menuButton}"
+                         Tag="#d9d9d9"
+                         Margin="0 20 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <fa:IconImage Icon="SignOut" Style="{DynamicResource menuButtonIcon}"/>
+                    <TextBlock Text="Выход" Style="{DynamicResource menuButtonText}" Margin="10 0 0 0"/>
                 </StackPanel>
             </RadioButton>
         </StackPanel>

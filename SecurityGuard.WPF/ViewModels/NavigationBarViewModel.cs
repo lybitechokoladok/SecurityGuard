@@ -18,7 +18,7 @@ namespace SecurityGuard.WPF.ViewModels
 
         public ICommand NavigateRequestListingCommand { get; }
 
-        public bool IsGeneralDepartmentOfficer => _accountStore.CurrentUser.JobTitle.Id.Equals((int)Role.GeneralDepartmentOfficer);
+        public bool IsGeneralDepartmentOfficer => _accountStore.CurrentUser.Role == (int)Role.GeneralDepartmentOfficer;
 
         public NavigationBarViewModel(AccountStore accountStore, INavigationService requestListingNavigationService)
         {
