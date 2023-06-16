@@ -38,7 +38,24 @@ namespace SecurityGuard.WPF.Stores
 
         public async Task LoadAllApproved() 
         {
+            IEnumerable<Request> requests = await _requestRepository.GetAllListAsync();
 
+            var approvedRequests = requests.Where(p => p.RequestDetails.RequestState.Id == (int)Domain.Enums.RequestState.Approved);
+
+            _requests.Clear();
+            _requests.AddRange(approvedRequests);
+
+
+        }
+
+        public async Task LoadAllCurrent()
+        {
+            IEnumerable<Request> requests = await _requestRepository.GetAllListAsync();
+
+            var currentRequests = requests.Where(p => p.RequestDetails.RequestState.Id == (int)Domain.Enums.RequestState.InProcess);
+
+            _requests.Clear();
+            _requests.AddRange(currentRequests);
         }
     }
 }
