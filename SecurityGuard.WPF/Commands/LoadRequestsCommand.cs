@@ -22,7 +22,7 @@ namespace SecurityGuard.WPF.Commands
 
         protected override async Task ExecuteAsync(object parameter)
         {
-            await _requestStore.Load();
+            await _requestStore.LoadAllNew();
         }
     }
 }

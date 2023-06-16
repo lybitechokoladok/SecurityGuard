@@ -28,13 +28,20 @@ namespace SecurityGuard.Infrastructure.Repositories
                             left join [RequestType] rt
 							on r.RequestTypeId = rt.Id
                             left join [RequestDetails] rd
-							on r.RequestDetailId = rd.Id";
+							on r.RequestDetailId = rd.Id
+                            inner join [User] u
+							on rd.UserId = u.Id
+                            inner join [RequestState] rs
+                            on rd.RequestStateId = rs.Id";
 
-               var requests = await connection.QueryAsync<Request, Client,RequestType,RequestDetails, Request>(sql, (request, client, requestType, requestDetail) => 
+               var requests = await connection.QueryAsync<Request, Client,RequestType,RequestDetails,User,RequestState,  Request>
+                    (sql, (request, client, requestType, requestDetail, user, requestState) => 
                {
                    request.Client = client;
                    request.Type = requestType;
                    request.RequestDetails = requestDetail;
+                   requestDetail.User = user;
+                   requestDetail.RequestState = requestState;
                    return request;
                });
 

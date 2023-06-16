@@ -9,8 +9,8 @@ namespace SecurityGuard.Domain.Models
     public class RequestDetails
     {
         public int Id { get; set; }
-        public int RequestStateId { get; set; }
+        public RequestState RequestState { get; set; }
         public DateTime RequestTimesatmp { get; set; }
-        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }
