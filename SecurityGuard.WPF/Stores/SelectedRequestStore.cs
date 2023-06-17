@@ -29,13 +29,7 @@ namespace SecurityGuard.WPF.Stores
 		{
 			_requestStore= requestStore;
 
-			_requestStore.RequestsSelected += RequestSelected;
 		}
 
-		private void RequestSelected(Request request) 
-		{
-			if(request.Id == SelectedRequest.Id)
-				SelectedRequest= request;
-		}
 	}
 }
