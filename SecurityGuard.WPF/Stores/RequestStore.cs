@@ -17,6 +17,7 @@ namespace SecurityGuard.WPF.Stores
 
 
         public event Action RequestsLoaded;
+        public event Action <Request> RequestsSelected;
         public RequestStore(IRequestRepository requestRepository)
         {
             _requestRepository = requestRepository;
@@ -56,6 +57,18 @@ namespace SecurityGuard.WPF.Stores
 
             _requests.Clear();
             _requests.AddRange(currentRequests);
+        }
+
+        public void OpenSelectedRequestDetail(Request request) 
+        {
+            int currentIndex = _requests.FindIndex(y => y.Id == request.Id);
+
+            if (currentIndex != -1)
+                _requests[currentIndex] = request;
+            else
+                _requests.Add(request);
+
+            RequestsSelected?.Invoke(request);
         }
     }
 }
