@@ -137,7 +137,8 @@
                 Background="Transparent"
                 BorderThickness="0"
                 Margin="0 10 0 0"
-                ItemsSource="{Binding RequestCollectionView}">
+                ItemsSource="{Binding RequestCollectionView}"
+            SelectedItem="{Binding SelectedRequest}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="Background" Value="Transparent"/>

@@ -54,6 +54,7 @@ namespace SecurityGuard.WPF
                          s.GetRequiredService<IAccountService>()));
                      serviceCollection.AddTransient<RequestListingViewModel>(s => new RequestListingViewModel(
                          s.GetRequiredService<RequestStore>(),
+                         s.GetRequiredService<SelectedRequestStore>(),
                          CreateRequestDetailNavigationService(s)));
                      serviceCollection.AddTransient<RequestDetailViewModel>(s => new RequestDetailViewModel(
                          s.GetRequiredService<SelectedRequestStore>(),

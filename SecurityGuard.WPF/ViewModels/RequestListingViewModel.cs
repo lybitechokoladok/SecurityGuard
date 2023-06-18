@@ -20,6 +20,7 @@ namespace SecurityGuard.WPF.ViewModels
     public class RequestListingViewModel : ViewModelBase
     {
         private readonly ObservableCollection<RequestListingItemViewModel> _requestListingItemViewModels;
+        private readonly SelectedRequestStore _selectedRequestStore;
         private readonly RequestStore _requestStore;
 
         public ICollectionView RequestCollectionView { get; }
@@ -48,14 +49,28 @@ namespace SecurityGuard.WPF.ViewModels
             }
         }
 
+        private RequestListingItemViewModel _selectedRequest;
+
+        public RequestListingItemViewModel SelectedRequest
+        {
+            get { return _selectedRequest; }
+            set 
+            {
+                _selectedRequest = value;
+                OnPropertyChanged(nameof(SelectedRequest));
+
+                _selectedRequestStore.SelectedRequest = _selectedRequest?.Request;
+            }
+        }
 
 
         public ICommand OpenRequestDetailCommand { get; }
         public ICommand LoadRequestsCommand { get; }
 
-        public RequestListingViewModel(RequestStore requestStore, INavigationService openRequestDetailNavigationService)
+        public RequestListingViewModel(RequestStore requestStore,SelectedRequestStore selectedRequestStore, INavigationService openRequestDetailNavigationService)
         {
             _requestStore = requestStore;
+            _selectedRequestStore = selectedRequestStore;
             _requestListingItemViewModels = new ObservableCollection<RequestListingItemViewModel>();
             RequestCollectionView = CollectionViewSource.GetDefaultView(_requestListingItemViewModels);
             RequestCollectionView.GroupDescriptions.Add(new PropertyGroupDescription(nameof(RequestListingItemViewModel.RequestType)));
