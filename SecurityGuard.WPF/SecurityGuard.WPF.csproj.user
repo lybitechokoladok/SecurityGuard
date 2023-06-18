@@ -19,6 +19,9 @@
     <Compile Update="Components\NavigationBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Components\RequestDetailForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\RequestListingItem.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -43,6 +46,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\NavigationBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\RequestDetailForm.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\RequestListingItem.xaml">

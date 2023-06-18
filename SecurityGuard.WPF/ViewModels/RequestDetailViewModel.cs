@@ -2,6 +2,7 @@
 using MVVMEssentials.Services;
 using MVVMEssentials.Stores;
 using MVVMEssentials.ViewModels;
+using SecurityGuard.WPF.Stores;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,15 @@ namespace SecurityGuard.WPF.ViewModels
 {
     public class RequestDetailViewModel : ViewModelBase
     {
-        public ICommand CloseRequestDetailCommand { get; }
-        public RequestDetailViewModel(INavigationService closeRequestDetailnavigationService)
+        public RequestDetailFormViewModel RequestDetailsFormViewModel { get; set; }
+        public RequestDetailViewModel(SelectedRequestStore selectedRequestStore, RequestStore requestStore, INavigationService closeNavigationService)
         {
-            CloseRequestDetailCommand = new NavigateCommand(closeRequestDetailnavigationService);
+            RequestDetailsFormViewModel = new RequestDetailFormViewModel(closeNavigationService, requestStore)
+            {
+                RequestId = selectedRequestStore.SelectedRequest.Id,
+                FullName = selectedRequestStore.SelectedRequest.ToString(),
+                ArrivalDate = selectedRequestStore.SelectedRequest.ArrivalDate
+            };
         }
     }
 }
