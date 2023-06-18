@@ -23,16 +23,11 @@ namespace SecurityGuard.Infrastructure.Repositories
             using (IDbConnection connection = new SqlConnection(_connection.GetConnectionString()))
             {
                 var sql = @"Select * from [Request] r
-                            left join [Client] c
-                            on r.ClientId = c.Id
-                            left join [RequestType] rt
-							on r.RequestTypeId = rt.Id
-                            left join [RequestDetails] rd
-							on r.RequestDetailId = rd.Id
-                            inner join [User] u
-							on rd.UserId = u.Id
-                            inner join [RequestState] rs
-                            on rd.RequestStateId = rs.Id";
+                            left join [Client] c on r.ClientId = c.Id
+                            left join [RequestType] rt on r.RequestTypeId = rt.Id
+                            left join [RequestDetails] rd on r.RequestDetailId = rd.Id
+                            inner join [User] u on rd.UserId = u.Id
+                            inner join [RequestState] rs on rd.RequestStateId = rs.Id";
 
                var requests = await connection.QueryAsync<Request, Client,RequestType,RequestDetails,User,RequestState,  Request>
                     (sql, (request, client, requestType, requestDetail, user, requestState) => 
@@ -44,6 +39,33 @@ namespace SecurityGuard.Infrastructure.Repositories
                    requestDetail.RequestState = requestState;
                    return request;
                });
+
+                return requests;
+            }
+        }
+
+        public async Task<IEnumerable<Request>> GetAllListByStateAsync(int stateId)
+        {
+            using (IDbConnection connection = new SqlConnection(_connection.GetConnectionString()))
+            {
+                var sql = @"Select * from [Request] r
+                            left join [Client] c on r.ClientId = c.Id
+                            left join [RequestType] rt on r.RequestTypeId = rt.Id
+                            left join [RequestDetails] rd on r.RequestDetailId = rd.Id
+                            inner join [User] u on rd.UserId = u.Id
+                            inner join [RequestState] rs on rd.RequestStateId = rs.Id
+                            where rs.Id = @stateId";
+
+                var requests = await connection.QueryAsync<Request, Client, RequestType, RequestDetails, User, RequestState, Request>
+                     (sql, (request, client, requestType, requestDetail, user, requestState) =>
+                     {
+                         request.Client = client;
+                         request.Type = requestType;
+                         request.RequestDetails = requestDetail;
+                         requestDetail.User = user;
+                         requestDetail.RequestState = requestState;
+                         return request;
+                     }, new { stateId} );
 
                 return requests;
             }
