@@ -86,7 +86,7 @@ namespace SecurityGuard.WPF.ViewModels
 
             _membersStore = memberStore;
             CloseRequestDetailCommand = new NavigateCommand(closeRequestDetailnavigationService);
-            LoadGroupMembersCommand = new LoadGroupMembersCommand(this, _membersStore);
+            LoadGroupMembersCommand = new LoadGroupMembersCommand(this, _membersStore, _selectedRequestStore);
             LoadGroupMembersCommand.Execute(null);
 
             _membersStore.GroupMembersLoaded += OnGroupMembersLoaded;

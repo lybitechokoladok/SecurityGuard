@@ -46,6 +46,7 @@ namespace SecurityGuard.WPF
 
                      serviceCollection.AddSingleton<DbConnection>();
                      serviceCollection.AddScoped<IMemberRepository, MemberRepository>();
+                     serviceCollection.AddScoped<IClientRepository, ClientRepository>();
                      serviceCollection.AddScoped<IUserRepository,UserRepository > ();
                      serviceCollection.AddScoped<IRequestRepository, RequestRepository>();
                      serviceCollection.AddScoped<IAccountService, AccountService>();
