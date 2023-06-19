@@ -10,26 +10,26 @@ using System.Threading.Tasks;
 
 namespace SecurityGuard.WPF.Stores
 {
-    public class GroupStore
+    public class MemberStore
     {
-        private readonly IGroupRepository _groupRepository;
-        private List<MembersGroup> _groups;
+        private readonly IMemberRepository _groupRepository;
+        private List<GroupMember> _groups;
 
-        public IEnumerable<MembersGroup> Groups => _groups;
+        public IEnumerable<GroupMember> Groups => _groups;
 
         public event Action GroupLoaded;
-        public GroupStore(IGroupRepository groupRepository)
+        public MemberStore(IMemberRepository groupRepository)
         {
             _groupRepository = groupRepository;
-            _groups = new List<MembersGroup>();
+            _groups = new List<GroupMember>();
         }
 
         public async Task LoadGroupByid(int id) 
         {
-            MembersGroup group = await _groupRepository.GetGroupByIdAsync(id);
+            var groupMembers = await _groupRepository.GetAllGroupMemberListAsync(id);
 
             _groups.Clear();
-            _groups.Add(group);
+            _groups.AddRange(groupMembers);
 
             GroupLoaded?.Invoke();
         }

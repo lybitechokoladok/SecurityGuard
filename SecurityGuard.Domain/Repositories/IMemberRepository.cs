@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace SecurityGuard.Domain.Repositories
 {
-    public interface IGroupRepository
+    public interface IMemberRepository
     {
-        Task<MembersGroup> GetGroupByIdAsync(int groupId);
         Task<IEnumerable<GroupMember>> GetAllGroupMemberListAsync(int groupId);
     }
 }
