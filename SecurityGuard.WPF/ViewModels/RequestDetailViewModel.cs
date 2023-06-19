@@ -15,11 +15,12 @@ namespace SecurityGuard.WPF.ViewModels
     public class RequestDetailViewModel : ViewModelBase
     {
         public RequestDetailFormViewModel RequestDetailsFormViewModel { get; set; }
-        public RequestDetailViewModel(SelectedRequestStore selectedRequestStore, RequestStore requestStore, INavigationService closeNavigationService)
+        public RequestDetailViewModel(SelectedRequestStore selectedRequestStore, MemberStore memberStore, INavigationService closeNavigationService)
         {
-            RequestDetailsFormViewModel = new RequestDetailFormViewModel(closeNavigationService, requestStore)
+            RequestDetailsFormViewModel = new RequestDetailFormViewModel(closeNavigationService, memberStore)
             {
                 RequestId = selectedRequestStore.SelectedRequest.Id,
+                GroupId = selectedRequestStore.SelectedRequest.GroupId,
                 FullName = selectedRequestStore.SelectedRequest.ToString(),
                 ArrivalDate = selectedRequestStore.SelectedRequest.ArrivalDate
             };

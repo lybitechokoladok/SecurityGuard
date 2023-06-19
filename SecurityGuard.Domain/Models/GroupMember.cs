@@ -15,5 +15,10 @@ namespace SecurityGuard.Domain.Models
         public string Phone { get; set; } = string.Empty;
 
         public MembersGroup GroupId { get; set; }
+
+        public override string ToString()
+        {
+            return FirstName + " " + LastName + " " + Patronomic;
+        }
     }
 }

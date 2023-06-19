@@ -12,26 +12,26 @@ namespace SecurityGuard.WPF.Stores
 {
     public class MemberStore
     {
-        private readonly IMemberRepository _groupRepository;
-        private List<GroupMember> _groups;
+        private readonly IMemberRepository _memberRepository;
+        private List<GroupMember> _members;
 
-        public IEnumerable<GroupMember> Groups => _groups;
+        public IEnumerable<GroupMember> Members => _members;
 
-        public event Action GroupLoaded;
+        public event Action GroupMembersLoaded;
         public MemberStore(IMemberRepository groupRepository)
         {
-            _groupRepository = groupRepository;
-            _groups = new List<GroupMember>();
+            _memberRepository = groupRepository;
+            _members = new List<GroupMember>();
         }
 
-        public async Task LoadGroupByid(int id) 
+        public async Task LoadGroupById(int id) 
         {
-            var groupMembers = await _groupRepository.GetAllGroupMemberListAsync(id);
+            var groupMembers = await _memberRepository.GetAllGroupMemberListAsync(id);
 
-            _groups.Clear();
-            _groups.AddRange(groupMembers);
+            _members.Clear();
+            _members.AddRange(groupMembers);
 
-            GroupLoaded?.Invoke();
+            GroupMembersLoaded?.Invoke();
         }
     }
 }

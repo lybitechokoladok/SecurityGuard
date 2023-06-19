@@ -1,9 +1,11 @@
 ﻿using MVVMEssentials.Commands;
 using MVVMEssentials.Services;
 using MVVMEssentials.ViewModels;
+using SecurityGuard.Domain.Models;
 using SecurityGuard.WPF.Stores;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +15,23 @@ namespace SecurityGuard.WPF.ViewModels
 {
     public class RequestDetailFormViewModel : ViewModelBase
     {
-        private readonly RequestStore _requestStore;
+        private readonly ObservableCollection<RequestGroupMemberItemViewModel> _members;
+
+        private readonly MemberStore _membersStore;
+
+        public IEnumerable<RequestGroupMemberItemViewModel> Members => _members;
+
+        private int? _groupId;
+        public int? GroupId
+        {
+            get { return _groupId; }
+            set 
+            {
+                _groupId = value;
+                OnPropertyChanged(nameof(GroupId));
+            }
+        }
+
 
         private int _id;
 
@@ -51,10 +69,32 @@ namespace SecurityGuard.WPF.ViewModels
         }
 
         public ICommand CloseRequestDetailCommand { get; }
-        public RequestDetailFormViewModel(INavigationService closeRequestDetailnavigationService, RequestStore requestStore)
+        public RequestDetailFormViewModel(INavigationService closeRequestDetailnavigationService, MemberStore memberStore)
         {
-            _requestStore = requestStore;
+            _members = new ObservableCollection<RequestGroupMemberItemViewModel>();
+
+            _membersStore = memberStore;
             CloseRequestDetailCommand = new NavigateCommand(closeRequestDetailnavigationService);
+
+            _membersStore.GroupMembersLoaded += OnGroupMembersLoaded;
+        }
+
+        private void OnGroupMembersLoaded()
+        {
+            _members.Clear();
+
+            foreach(GroupMember member in _membersStore.Members) 
+            {
+                AddMember(member);
+            }
+
+        }
+
+        private void AddMember(GroupMember member)
+        {
+            RequestGroupMemberItemViewModel itemViewModel =
+                new RequestGroupMemberItemViewModel(member);
+            _members.Add(itemViewModel);
         }
     }
 }

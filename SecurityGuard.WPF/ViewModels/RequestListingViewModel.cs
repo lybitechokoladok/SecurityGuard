@@ -67,7 +67,9 @@ namespace SecurityGuard.WPF.ViewModels
         public ICommand OpenRequestDetailCommand { get; }
         public ICommand LoadRequestsCommand { get; }
 
-        public RequestListingViewModel(RequestStore requestStore,SelectedRequestStore selectedRequestStore, INavigationService openRequestDetailNavigationService)
+        public RequestListingViewModel(RequestStore requestStore,
+            SelectedRequestStore selectedRequestStore,
+            INavigationService openRequestDetailNavigationService)
         {
             _requestStore = requestStore;
             _selectedRequestStore = selectedRequestStore;
