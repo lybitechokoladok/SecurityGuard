@@ -24,7 +24,7 @@ namespace SecurityGuard.WPF.Stores
             _members = new List<GroupMember>();
         }
 
-        public async Task LoadGroupById(int id) 
+        public async Task LoadGroupById(int? id) 
         {
             var groupMembers = await _memberRepository.GetAllGroupMemberListAsync(id);
 

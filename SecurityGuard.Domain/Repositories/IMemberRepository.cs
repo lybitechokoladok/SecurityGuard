@@ -9,6 +9,6 @@ namespace SecurityGuard.Domain.Repositories
 {
     public interface IMemberRepository
     {
-        Task<IEnumerable<GroupMember>> GetAllGroupMemberListAsync(int groupId);
+        Task<IEnumerable<GroupMember>> GetAllGroupMemberListAsync(int? groupId);
     }
 }

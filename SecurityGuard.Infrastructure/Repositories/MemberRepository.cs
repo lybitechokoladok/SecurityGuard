@@ -21,7 +21,7 @@ namespace SecurityGuard.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<GroupMember>> GetAllGroupMemberListAsync(int groupId)
+        public async Task<IEnumerable<GroupMember>> GetAllGroupMemberListAsync(int? groupId)
         {
 
             using (IDbConnection connection = new SqlConnection(_context.GetConnectionString()))

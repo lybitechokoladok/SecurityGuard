@@ -10,6 +10,9 @@
     <Compile Update="Components\BindablePasswordBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Components\GroupMemberItem.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\Layout.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Components\BindablePasswordBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Components\GroupMemberItem.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Components\Layout.xaml">

@@ -2,6 +2,7 @@
 using MVVMEssentials.Services;
 using MVVMEssentials.ViewModels;
 using SecurityGuard.Domain.Models;
+using SecurityGuard.WPF.Commands;
 using SecurityGuard.WPF.Stores;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace SecurityGuard.WPF.ViewModels
     public class RequestDetailFormViewModel : ViewModelBase
     {
         private readonly ObservableCollection<RequestGroupMemberItemViewModel> _members;
+        private readonly SelectedRequestStore _selectedRequestStore;
 
         private readonly MemberStore _membersStore;
 
@@ -69,12 +71,20 @@ namespace SecurityGuard.WPF.ViewModels
         }
 
         public ICommand CloseRequestDetailCommand { get; }
-        public RequestDetailFormViewModel(INavigationService closeRequestDetailnavigationService, MemberStore memberStore)
+        public ICommand LoadGroupMembersCommand { get; }
+        public RequestDetailFormViewModel
+            (INavigationService closeRequestDetailnavigationService,
+            MemberStore memberStore,
+            SelectedRequestStore selectedRequestStore)
         {
             _members = new ObservableCollection<RequestGroupMemberItemViewModel>();
+            _selectedRequestStore= selectedRequestStore;
+            GroupId = selectedRequestStore.SelectedRequest.GroupId;
 
             _membersStore = memberStore;
             CloseRequestDetailCommand = new NavigateCommand(closeRequestDetailnavigationService);
+            LoadGroupMembersCommand = new LoadGroupMembersCommand(this, _membersStore);
+            LoadGroupMembersCommand.Execute(null);
 
             _membersStore.GroupMembersLoaded += OnGroupMembersLoaded;
         }
@@ -95,6 +105,12 @@ namespace SecurityGuard.WPF.ViewModels
             RequestGroupMemberItemViewModel itemViewModel =
                 new RequestGroupMemberItemViewModel(member);
             _members.Add(itemViewModel);
+        }
+
+        public override void Dispose()
+        {
+            _membersStore.GroupMembersLoaded -= OnGroupMembersLoaded;
+            base.Dispose();
         }
     }
 }

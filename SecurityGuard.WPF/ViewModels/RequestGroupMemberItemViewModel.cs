@@ -11,7 +11,6 @@ namespace SecurityGuard.WPF.ViewModels
     public class RequestGroupMemberItemViewModel : ViewModelBase
     {
 		public GroupMember GroupMember { get; private set; }
-
 		public string FullName => GroupMember.ToString();
 		public string Phone => GroupMember.Phone;
 

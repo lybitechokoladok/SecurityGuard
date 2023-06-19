@@ -20,7 +20,7 @@
             Orientation="Vertical">
                 <TextBlock>
                 <Run Text="Id: "/>
-                <Run Text="{Binding Id}"/>
+                <Run Text="{Binding RequestId}"/>
                 </TextBlock>
                 <TextBlock>
                 <Run Text="ФИО: "/>
@@ -31,6 +31,9 @@
                     Text="Дата прибытия: "/>
                     <Run Text="{Binding ArrivalDate}"/>
                 </TextBlock>
+                <Button
+                    Content="load"
+                    Command="{Binding LoadGroupMembersCommand}"/>
             </StackPanel>
 
             <StackPanel
@@ -68,7 +71,7 @@
                 Background="Transparent"
                 BorderThickness="0"
                 Margin="0 10 0 0"
-                ItemsSource="{Binding Clients}">
+                ItemsSource="{Binding Members}">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Background" Value="Transparent"/>
@@ -82,6 +85,11 @@
                         </Setter>
                     </Style>
                 </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <local:GroupMemberItem/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
 
             <DockPanel
