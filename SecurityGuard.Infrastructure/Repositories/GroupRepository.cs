@@ -30,9 +30,9 @@ namespace SecurityGuard.Infrastructure.Repositories
         {
             using (IDbConnection connection = new SqlConnection(_context.GetConnectionString())) 
             {
-                var sqlMembers = @"Select * From [GroupMember] gm
-                            where gm.GroupId = @groupId";
-                var sql = @"";
+                var sqlMembers = @"Select * From [GroupMember] 
+                                   where GroupId = @groupId";
+                var sql = @"Select * From [MembersGroup] where Id = @groupId";
 
                 var groupMembers = await connection.QueryAsync<GroupMember>(sqlMembers, new { groupId });
 
