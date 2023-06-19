@@ -23,6 +23,8 @@ namespace SecurityGuard.WPF.ViewModels
 
         public IEnumerable<RequestGroupMemberItemViewModel> Members => _members;
 
+        public bool HasGroup { get; set; }
+
         private int? _groupId;
         public int? GroupId
         {
@@ -80,6 +82,7 @@ namespace SecurityGuard.WPF.ViewModels
             _members = new ObservableCollection<RequestGroupMemberItemViewModel>();
             _selectedRequestStore= selectedRequestStore;
             GroupId = selectedRequestStore.SelectedRequest.GroupId;
+            HasGroup = selectedRequestStore.SelectedRequest.GroupId != null;
 
             _membersStore = memberStore;
             CloseRequestDetailCommand = new NavigateCommand(closeRequestDetailnavigationService);
