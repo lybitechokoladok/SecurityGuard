@@ -38,12 +38,14 @@ namespace SecurityGuard.WPF
                      serviceCollection.AddSingleton<NavigationStore>();
                      serviceCollection.AddSingleton<ModalNavigationStore>();
                      serviceCollection.AddSingleton<RequestStore>();
+                     serviceCollection.AddSingleton<GroupStore>();
                      serviceCollection.AddSingleton<SelectedRequestStore>();
                      serviceCollection.AddSingleton<INavigationService>(s => CreateLoginNavigationService(s));
                      serviceCollection.AddSingleton<CloseModalNavigationService>();
                      serviceCollection.AddSingleton<AccountStore>();
 
                      serviceCollection.AddSingleton<DbConnection>();
+                     serviceCollection.AddScoped<IGroupRepository, GroupRepository>();
                      serviceCollection.AddScoped<IUserRepository,UserRepository > ();
                      serviceCollection.AddScoped<IRequestRepository, RequestRepository>();
                      serviceCollection.AddScoped<IAccountService, AccountService>();
