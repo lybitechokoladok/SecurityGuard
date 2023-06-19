@@ -10,7 +10,6 @@ namespace SecurityGuard.Domain.Models
     {
         public int GroupId { get; set; }
         public int GroupNumber { get; set; }
-
-        public ICollection<GroupMember> GroupMembers { get; set; }
+        public List<GroupMember> GroupMembers { get; set; }
     }
 }

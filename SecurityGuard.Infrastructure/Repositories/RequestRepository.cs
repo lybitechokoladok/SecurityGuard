@@ -30,7 +30,7 @@ namespace SecurityGuard.Infrastructure.Repositories
                             inner join [RequestState] rs on rd.RequestStateId = rs.Id";
 
                var requests = await connection.QueryAsync<Request, Client,RequestType,RequestDetails,User,RequestState,  Request>
-                    (sql, (request, client, requestType, requestDetail, user, requestState) => 
+                    (sql, (request, client, requestType, requestDetail ,user, requestState) => 
                {
                    request.Client = client;
                    request.Type = requestType;

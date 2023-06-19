@@ -29,22 +29,7 @@
                 <TextBlock>
                 <Run BaselineAlignment="Center"
                     Text="Дата прибытия: "/>
-                    <TextBox
-                    Text="{Binding ArrivalDate}"
-                    Foreground="white"
-                    Height="30" Width="200"
-                    FontSize="16"
-                    VerticalContentAlignment="Bottom"
-                    VerticalAlignment="Center"
-                    Padding="10 0 0 0"
-                    Background="Transparent"
-                    BorderThickness="0,0,0,1">
-                    <TextBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="2"/>
-                        </Style>
-                    </TextBox.Resources>
-                    </TextBox>
+                    <Run Text="{Binding ArrivalDate}"/>
                 </TextBlock>
             </StackPanel>
 
