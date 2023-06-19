@@ -23,46 +23,41 @@
             Grid.Row="0"
             Orientation="Vertical">
                 <TextBlock>
-                <Run Text="Id: "/>
+                <Run Text="Номер заявки: "/>
                 <Run Text="{Binding RequestId}"/>
                 </TextBlock>
-                <TextBlock>
-                <Run Text="ФИО: "/>
+                <TextBlock TextWrapping="Wrap">
+                <Run Text="ФИО посетителя: "/>
                 <Run Text="{Binding FullName}"/>
                 </TextBlock>
                 <TextBlock>
                 <Run BaselineAlignment="Center"
                     Text="Дата прибытия: "/>
-                    <Run Text="{Binding ArrivalDate}"/>
+                    <Run Text="{Binding ArrivalDate,StringFormat={}{0:yy.MM.dd hh:mm:ss}}"/>
                 </TextBlock>
             </StackPanel>
 
-            <StackPanel
+            <DockPanel
             Grid.Row="1"
             Margin="0 100 0 0"
             Visibility="{Binding HasGroup,
                 Converter={StaticResource BooleanToVisibilityConverter},
-                ConverterParameter=Normal}"
-            Orientation="Vertical">
+                ConverterParameter=Normal}">
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock
+                <TextBlock
                     Grid.Column="0"
                     Foreground="#d9d9d9"
+                    HorizontalAlignment="Left"
                     FontSize="14"
                     Text="ФИО участника группы"/>
-                    <TextBlock
+                <TextBlock
                     Grid.Column="1"
                     Foreground="#d9d9d9"
+                    HorizontalAlignment="Right"
+                    Margin="0 0 40 0"
                     FontSize="14"
                     Text="Телефон"/>
-                </Grid>
-            </StackPanel>
+            </DockPanel>
 
             <ListView
                 Grid.Row="2"
@@ -97,11 +92,16 @@
                 Grid.Row="2"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
+                Margin="0 20 0 20"
                 FontSize="30"
                 Visibility="{Binding HasGroup,
                                      Converter={StaticResource BooleanToVisibilityConverter},
                                      ConverterParameter=Inverted}"
-                Text="Группа отсутствует"/>
+                Text="Группа отсутствует">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="#878787" Opacity="0.3"/>
+                </TextBlock.Foreground>
+            </TextBlock>
             <DockPanel
             Grid.Row="3"
             Margin="10">
