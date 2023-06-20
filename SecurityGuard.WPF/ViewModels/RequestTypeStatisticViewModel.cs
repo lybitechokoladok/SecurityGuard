@@ -15,7 +15,7 @@ using System.Windows.Input;
 
 namespace SecurityGuard.WPF.ViewModels
 {
-    public class ClientStatisticViewModel : ViewModelBase 
+    public class RequestTypeStatisticViewModel : ViewModelBase 
     { 
         
         private readonly RequestStore _requestStore;
@@ -28,7 +28,7 @@ namespace SecurityGuard.WPF.ViewModels
         public int ClosedCount { get; set; }
         public SeriesCollection PieCollection {  get; set; }
         public ICommand LoadAllRequestCommand { get; }
-        public ClientStatisticViewModel(RequestStore requestStore)
+        public RequestTypeStatisticViewModel(RequestStore requestStore)
         {
             _requests = new ObservableCollection<Request>();
             PieCollection = new SeriesCollection();

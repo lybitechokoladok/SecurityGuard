@@ -30,7 +30,7 @@
             <DataTemplate DataType="{x:Type vms:RequestDetailViewModel}">
                 <views:RequestDetailView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type vms:ClientStatisticViewModel}">
+            <DataTemplate DataType="{x:Type vms:RequestTypeStatisticViewModel}">
                 <views:StatisticsView/>
             </DataTemplate>
         </Grid.Resources>
