@@ -14,7 +14,7 @@ namespace SecurityGuard.Domain.Models
         public string Patronomic { get; set; } = string.Empty;
         public string? Organization { get; set; } = null;
         public string Phone { get;set; } = string.Empty;
-        public string PasswordNumber { get; set; } = string.Empty;
-        public string PasswordSeries { get;set; } = string.Empty;
+        public string PasportNumber { get; set; } = string.Empty;
+        public string PasportSeries { get;set; } = string.Empty;
     }
 }

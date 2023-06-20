@@ -49,6 +49,30 @@ namespace SecurityGuard.WPF.ViewModels
             }
         }
 
+        private string _pasportNumber;
+
+        public string PasportNumber
+        {
+            get { return _pasportNumber; }
+            set
+            {
+                _pasportNumber = value;
+                OnPropertyChanged(nameof(PasportNumber));
+            }
+        }
+
+        private string _pasportSeries;
+
+        public string PasportSeries
+        {
+            get { return _pasportSeries; }
+            set
+            {
+                _pasportSeries = value;
+                OnPropertyChanged(nameof(PasportSeries));
+            }
+        }
+
         private string _fullName;
 
         public string FullName

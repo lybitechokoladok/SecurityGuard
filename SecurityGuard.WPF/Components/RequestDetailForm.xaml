@@ -35,6 +35,14 @@
                     Text="Дата прибытия: "/>
                     <Run Text="{Binding ArrivalDate,StringFormat={}{0:yy.MM.dd hh:mm:ss}}"/>
                 </TextBlock>
+                <TextBlock>
+                    <Run Text="Серия паспорта:"/>
+                    <Run Text="{Binding PasportSeries}"/>
+                </TextBlock>
+                <TextBlock>
+                    <Run Text="Номер паспорта:"/>
+                    <Run Text="{Binding PasportNumber}"/>
+                </TextBlock>
             </StackPanel>
 
             <DockPanel

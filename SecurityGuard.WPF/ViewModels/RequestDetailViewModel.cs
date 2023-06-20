@@ -20,6 +20,8 @@ namespace SecurityGuard.WPF.ViewModels
             RequestDetailsFormViewModel = new RequestDetailFormViewModel(closeNavigationService, memberStore, selectedRequestStore)
             {
                 RequestId = selectedRequestStore.SelectedRequest.Id,
+                PasportNumber = selectedRequestStore.SelectedRequest.Client.PasportNumber,
+                PasportSeries = selectedRequestStore.SelectedRequest.Client.PasportSeries,
                 FullName = selectedRequestStore.SelectedRequest.ToString(),
                 ArrivalDate = selectedRequestStore.SelectedRequest.ArrivalDate
             };
