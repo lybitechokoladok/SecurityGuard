@@ -15,9 +15,17 @@ namespace SecurityGuard.WPF.ViewModels
     public class RequestDetailViewModel : ViewModelBase
     {
         public RequestDetailFormViewModel RequestDetailsFormViewModel { get; set; }
-        public RequestDetailViewModel(SelectedRequestStore selectedRequestStore, MemberStore memberStore, INavigationService closeNavigationService)
+        public RequestDetailViewModel(SelectedRequestStore selectedRequestStore,
+            MemberStore memberStore,
+            RequestStore requestStore,
+            ModalNavigationStore modalNavigationStore,
+            INavigationService closeNavigationService)
         {
-            RequestDetailsFormViewModel = new RequestDetailFormViewModel(closeNavigationService, memberStore, selectedRequestStore)
+            RequestDetailsFormViewModel = new RequestDetailFormViewModel(closeNavigationService,
+                memberStore,
+                requestStore,
+                modalNavigationStore,
+                selectedRequestStore)
             {
                 RequestId = selectedRequestStore.SelectedRequest.Id,
                 PasportNumber = selectedRequestStore.SelectedRequest.Client.PasportNumber,

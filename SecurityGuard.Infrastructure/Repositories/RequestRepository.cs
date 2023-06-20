@@ -79,5 +79,20 @@ namespace SecurityGuard.Infrastructure.Repositories
                     new { id });
             }
         }
+
+        public async Task<bool>UpdateStateAsync(int requestDetailsId, int newState)
+        {
+            using(IDbConnection connection = new SqlConnection(_connection.GetConnectionString())) 
+            {
+                var sql = @"Update RequestDetails set RequestStateId=@newState where Id=@requestDetailsId";
+
+                var result = await connection.ExecuteAsync(sql, new { newState, requestDetailsId });
+
+                if(result == 0)
+                    return false;
+                else
+                    return true;
+            }
+        }
     }
 }

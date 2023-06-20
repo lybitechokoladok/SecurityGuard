@@ -12,5 +12,6 @@ namespace SecurityGuard.Domain.Repositories
         Task<Request> GetRequestByIdAsync(int id);
         Task<IEnumerable<Request>> GetAllListAsync();
         Task<IEnumerable<Request>> GetAllListByStateAsync(int stateId);
+        Task<bool> UpdateStateAsync(int requestDetailsId, int newState);
     }
 }

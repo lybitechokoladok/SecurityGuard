@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SecurityGuard.WPF.Commands;
 
 namespace SecurityGuard.WPF.Stores
 {
@@ -57,6 +58,18 @@ namespace SecurityGuard.WPF.Stores
 
             _requests.Clear();
             _requests.AddRange(currentRequests);
+        }
+
+        public async Task<bool> UpdateRequestState(int requestDetailId, int newState) 
+        {
+            bool isUpdated = await _requestRepository.UpdateStateAsync(requestDetailId, newState);
+
+            await LoadAllNew();
+
+            if(isUpdated)
+                return true;
+            else
+                return false;
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using MVVMEssentials.Commands;
 using MVVMEssentials.Services;
+using MVVMEssentials.Stores;
 using MVVMEssentials.ViewModels;
 using SecurityGuard.Domain.Models;
 using SecurityGuard.WPF.Commands;
@@ -17,12 +18,15 @@ namespace SecurityGuard.WPF.ViewModels
     public class RequestDetailFormViewModel : ViewModelBase
     {
         private readonly ObservableCollection<RequestGroupMemberItemViewModel> _members;
+        private readonly ModalNavigationStore _modalNavigationStore;
         private readonly SelectedRequestStore _selectedRequestStore;
+        private readonly RequestStore _requestStore;
 
         private readonly MemberStore _membersStore;
 
         public IEnumerable<RequestGroupMemberItemViewModel> Members => _members;
 
+        public int RequestDetailId => _selectedRequestStore.SelectedRequest.RequestDetails.Id;
         public bool HasGroup { get; set; }
 
         private int? _groupId;
@@ -97,20 +101,26 @@ namespace SecurityGuard.WPF.ViewModels
         }
 
         public ICommand CloseRequestDetailCommand { get; }
+        public ICommand UpdateRequestStateCommand { get; }
         public ICommand LoadGroupMembersCommand { get; }
         public RequestDetailFormViewModel
             (INavigationService closeRequestDetailnavigationService,
             MemberStore memberStore,
+            RequestStore requestStore,
+            ModalNavigationStore modalNavigationStore,
             SelectedRequestStore selectedRequestStore)
         {
             _members = new ObservableCollection<RequestGroupMemberItemViewModel>();
             _selectedRequestStore= selectedRequestStore;
+            _modalNavigationStore = modalNavigationStore;
+            _requestStore = requestStore;
             GroupId = selectedRequestStore.SelectedRequest.GroupId;
             HasGroup = selectedRequestStore.SelectedRequest.GroupId != null;
 
             _membersStore = memberStore;
             CloseRequestDetailCommand = new NavigateCommand(closeRequestDetailnavigationService);
             LoadGroupMembersCommand = new LoadGroupMembersCommand(this, _membersStore, _selectedRequestStore);
+            UpdateRequestStateCommand = new UpdateRequestStateCommand(requestStore, modalNavigationStore, this);
             LoadGroupMembersCommand.Execute(null);
 
             _membersStore.GroupMembersLoaded += OnGroupMembersLoaded;

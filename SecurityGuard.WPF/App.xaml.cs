@@ -64,6 +64,8 @@ namespace SecurityGuard.WPF
                      serviceCollection.AddTransient<RequestDetailViewModel>(s => new RequestDetailViewModel(
                          s.GetRequiredService<SelectedRequestStore>(),
                          s.GetRequiredService<MemberStore>(),
+                         s.GetRequiredService<RequestStore>(),
+                         s.GetRequiredService<ModalNavigationStore>(),
                          s.GetRequiredService<CloseModalNavigationService>()));
                      serviceCollection.AddTransient<NavigationBarViewModel>(CreateNavigationBarViewModel);
 

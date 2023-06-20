@@ -117,7 +117,8 @@
                 Content="Одобрить"
                 Foreground="Black"
                 Height="40" Width="100"
-                HorizontalAlignment="Left"/>
+                HorizontalAlignment="Left"
+                Command="{Binding UpdateRequestStateCommand}"/>
                 <Button
                 Content="Отмена"
                 Height="40" Width="100"
