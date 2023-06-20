@@ -38,6 +38,7 @@ namespace SecurityGuard.WPF.ViewModels
         }
 
 
+
         private string _requestFilter = string.Empty;
         public string RequestFilter
         {

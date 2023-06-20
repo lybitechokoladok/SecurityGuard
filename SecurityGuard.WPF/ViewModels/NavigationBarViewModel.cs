@@ -17,13 +17,18 @@ namespace SecurityGuard.WPF.ViewModels
         private readonly AccountStore _accountStore;
 
         public ICommand NavigateRequestListingCommand { get; }
+        public ICommand NavigateStatisticsCommand { get; }
 
         public bool IsGeneralDepartmentOfficer => _accountStore.CurrentUser.Role == (int)Role.GeneralDepartmentOfficer;
 
-        public NavigationBarViewModel(AccountStore accountStore, INavigationService requestListingNavigationService)
+        public NavigationBarViewModel(
+            AccountStore accountStore, 
+            INavigationService requestListingNavigationService,
+            INavigationService statisticsnavigationService)
         {
             _accountStore = accountStore;
             NavigateRequestListingCommand = new NavigateCommand(requestListingNavigationService);
+            NavigateStatisticsCommand = new NavigateCommand(statisticsnavigationService);
         }
     }
 }

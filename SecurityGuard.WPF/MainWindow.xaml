@@ -30,6 +30,9 @@
             <DataTemplate DataType="{x:Type vms:RequestDetailViewModel}">
                 <views:RequestDetailView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:ClientStatisticViewModel}">
+                <views:StatisticsView/>
+            </DataTemplate>
         </Grid.Resources>
 
         <custom:Modal Panel.ZIndex="1" IsOpen="{Binding IsOpen}">

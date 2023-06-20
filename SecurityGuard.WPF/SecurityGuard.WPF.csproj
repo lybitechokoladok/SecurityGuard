@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
     <PackageReference Include="MVVMEssentials.WPF" Version="1.0.3" />
     <PackageReference Include="SimpleModal.WPF" Version="1.0.0" />

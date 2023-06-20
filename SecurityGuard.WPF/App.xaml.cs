@@ -61,6 +61,8 @@ namespace SecurityGuard.WPF
                          s.GetRequiredService<SelectedRequestStore>(),
                          s.GetRequiredService<ClientStore>(),
                          CreateRequestDetailNavigationService(s)));
+                     serviceCollection.AddTransient<ClientStatisticViewModel>(s => new ClientStatisticViewModel(
+                         s.GetRequiredService<RequestStore>()));
                      serviceCollection.AddTransient<RequestDetailViewModel>(s => new RequestDetailViewModel(
                          s.GetRequiredService<SelectedRequestStore>(),
                          s.GetRequiredService<MemberStore>(),
@@ -124,7 +126,15 @@ namespace SecurityGuard.WPF
         private NavigationBarViewModel CreateNavigationBarViewModel(IServiceProvider arg)
         {
             return new NavigationBarViewModel(arg.GetRequiredService<AccountStore>(),
-                CreateRequestListingNavigationService(arg));
+                CreateRequestListingNavigationService(arg),
+                CreateStatisticsNavigationService(arg));
+        }
+
+        private INavigationService CreateStatisticsNavigationService(IServiceProvider arg)
+        {
+            return new LayoutNavigationService<ClientStatisticViewModel>(arg.GetRequiredService<NavigationStore>(),
+                () => arg.GetRequiredService<ClientStatisticViewModel>(),
+                () => arg.GetRequiredService<NavigationBarViewModel>());
         }
     }
 }

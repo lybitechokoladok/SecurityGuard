@@ -1,7 +1,7 @@
-﻿using SecurityGuard.Domain.Models;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,14 +18,15 @@ using System.Windows.Shapes;
 namespace SecurityGuard.WPF.Views
 {
     /// <summary>
-    /// Логика взаимодействия для RequestListingView.xaml
+    /// Логика взаимодействия для StatisticsView.xaml
     /// </summary>
-    public partial class RequestListingView : UserControl
+    public partial class StatisticsView : UserControl
     {
-        public RequestListingView()
+        public StatisticsView()
         {
             InitializeComponent();
 
         }
+
     }
 }
