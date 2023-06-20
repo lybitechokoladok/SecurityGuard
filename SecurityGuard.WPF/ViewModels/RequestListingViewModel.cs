@@ -21,6 +21,7 @@ namespace SecurityGuard.WPF.ViewModels
     {
         private readonly ObservableCollection<RequestListingItemViewModel> _requestListingItemViewModels;
         private readonly SelectedRequestStore _selectedRequestStore;
+        private readonly ClientStore _clientStore;
         private readonly RequestStore _requestStore;
 
         public ICollectionView RequestCollectionView { get; }
@@ -69,9 +70,11 @@ namespace SecurityGuard.WPF.ViewModels
 
         public RequestListingViewModel(RequestStore requestStore,
             SelectedRequestStore selectedRequestStore,
+            ClientStore clientStore,
             INavigationService openRequestDetailNavigationService)
         {
             _requestStore = requestStore;
+            _clientStore = clientStore;
             _selectedRequestStore = selectedRequestStore;
             _requestListingItemViewModels = new ObservableCollection<RequestListingItemViewModel>();
             RequestCollectionView = CollectionViewSource.GetDefaultView(_requestListingItemViewModels);
@@ -79,7 +82,7 @@ namespace SecurityGuard.WPF.ViewModels
 
             RequestCollectionView.Filter = FilterRequest;
 
-            OpenRequestDetailCommand = new NavigateCommand(openRequestDetailNavigationService);
+            OpenRequestDetailCommand = new OpenRequestDetailCommand(openRequestDetailNavigationService, clientStore, this) ;
             LoadRequestsCommand = new LoadRequestsCommand(this, requestStore);
             LoadRequestsCommand.Execute(null);
 

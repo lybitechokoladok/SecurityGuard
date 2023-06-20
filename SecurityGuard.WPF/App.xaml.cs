@@ -39,6 +39,7 @@ namespace SecurityGuard.WPF
                      serviceCollection.AddSingleton<ModalNavigationStore>();
                      serviceCollection.AddSingleton<RequestStore>();
                      serviceCollection.AddSingleton<MemberStore>();
+                     serviceCollection.AddSingleton<ClientStore>();
                      serviceCollection.AddSingleton<SelectedRequestStore>();
                      serviceCollection.AddSingleton<INavigationService>(s => CreateLoginNavigationService(s));
                      serviceCollection.AddSingleton<CloseModalNavigationService>();
@@ -58,6 +59,7 @@ namespace SecurityGuard.WPF
                      serviceCollection.AddTransient<RequestListingViewModel>(s => new RequestListingViewModel(
                          s.GetRequiredService<RequestStore>(),
                          s.GetRequiredService<SelectedRequestStore>(),
+                         s.GetRequiredService<ClientStore>(),
                          CreateRequestDetailNavigationService(s)));
                      serviceCollection.AddTransient<RequestDetailViewModel>(s => new RequestDetailViewModel(
                          s.GetRequiredService<SelectedRequestStore>(),
