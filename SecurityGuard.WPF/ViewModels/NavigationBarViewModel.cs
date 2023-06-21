@@ -2,6 +2,7 @@
 using MVVMEssentials.Services;
 using MVVMEssentials.ViewModels;
 using SecurityGuard.Domain.Enums;
+using SecurityGuard.WPF.Commands;
 using SecurityGuard.WPF.Stores;
 using System;
 using System.Collections.Generic;
@@ -18,17 +19,20 @@ namespace SecurityGuard.WPF.ViewModels
 
         public ICommand NavigateRequestListingCommand { get; }
         public ICommand NavigateStatisticsCommand { get; }
+        public ICommand NavigateLoginCommand { get; }
 
         public bool IsGeneralDepartmentOfficer => _accountStore.CurrentUser.Role == (int)Role.GeneralDepartmentOfficer;
 
         public NavigationBarViewModel(
             AccountStore accountStore, 
             INavigationService requestListingNavigationService,
-            INavigationService statisticsnavigationService)
+            INavigationService statisticsnavigationService,
+            INavigationService loginNavigationService)
         {
             _accountStore = accountStore;
             NavigateRequestListingCommand = new NavigateCommand(requestListingNavigationService);
             NavigateStatisticsCommand = new NavigateCommand(statisticsnavigationService);
+            NavigateLoginCommand = new LogoutCommand(accountStore, loginNavigationService);
         }
     }
 }

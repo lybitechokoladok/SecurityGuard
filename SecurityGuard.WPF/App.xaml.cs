@@ -127,7 +127,8 @@ namespace SecurityGuard.WPF
         {
             return new NavigationBarViewModel(arg.GetRequiredService<AccountStore>(),
                 CreateRequestListingNavigationService(arg),
-                CreateStatisticsNavigationService(arg));
+                CreateStatisticsNavigationService(arg),
+                CreateLoginNavigationService(arg));
         }
 
         private INavigationService CreateStatisticsNavigationService(IServiceProvider arg)

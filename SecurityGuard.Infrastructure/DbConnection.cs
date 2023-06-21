@@ -11,7 +11,7 @@ namespace SecurityGuard.Infrastructure
 {
     public class DbConnection
     {
-        private readonly string _connectionString = "Data Source=(local)\\SQLEXPRESS;Initial Catalog=SecurityGuard;Integrated Security=True; Trust Server Certificate= True";
+        private readonly string _connectionString = "Data Source=DESKTOP-0D1UU6P;Initial Catalog=SecurityGuard;Integrated Security=True; Trust Server Certificate= True";
 
 
         public string GetConnectionString() 

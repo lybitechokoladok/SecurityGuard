@@ -86,7 +86,7 @@
             <RadioButton Style="{DynamicResource menuButton}"
                          Tag="#d9d9d9"
                          Margin="0 20 0 0"
-                         >
+                         Command="{Binding NavigateLoginCommand}">
                 <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="SignOut" Style="{DynamicResource menuButtonIcon}"/>
                     <TextBlock Text="Выход" Style="{DynamicResource menuButtonText}" Margin="10 0 0 0"/>
