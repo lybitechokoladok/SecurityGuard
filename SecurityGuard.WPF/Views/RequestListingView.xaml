@@ -196,8 +196,9 @@
             Visibility="{Binding HasSearchResult,
             Converter={StaticResource InvertableBooleanToVisibilityConverter},
             ConverterParameter=Inverted, UpdateSourceTrigger=PropertyChanged}">
-            <Run Text="Отсутствуют результаты поиска по запросу"/>
+            <Run Text='Отсутствуют результаты поиска по запросу &quot;'/>
             <Run Text="{Binding Text, ElementName=SearchText}"/>
+            <Run Text='&quot;'/>
         </TextBlock>
     </Grid>
 </UserControl>
