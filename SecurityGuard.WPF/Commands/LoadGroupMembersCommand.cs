@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SecurityGuard.WPF.Commands
 {
@@ -24,7 +25,15 @@ namespace SecurityGuard.WPF.Commands
 
         protected override async Task ExecuteAsync(object parameter)
         {
-            await _memberStore.LoadGroupById(_viewModel.GroupId);
+            try
+            {
+                await _memberStore.LoadGroupById(_viewModel.GroupId);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось загрузить участников группы", "Сообщение");
+                throw new Exception();
+            }
         }
     }
 }

@@ -29,7 +29,7 @@ namespace SecurityGuard.WPF.Services
             var user = await _userRepository.GetUserByUsernameAsync(username);
             if (user == null)
             {
-                MessageBox.Show("Такого пользователя не неайдено");
+                MessageBox.Show("Такого пользователя не найдено");
                 throw new Exception();
             }
             else
@@ -38,7 +38,7 @@ namespace SecurityGuard.WPF.Services
 
                 if (!passwordIsValid)
                 {
-                    MessageBox.Show("Не верный пароль");
+                    MessageBox.Show("Неверный пароль");
                     throw new Exception();
                 }
             }

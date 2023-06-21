@@ -30,7 +30,7 @@ namespace SecurityGuard.WPF.Commands
             var isBanned = await _clientStore.IsClientsBlackList(_viewModel.SelectedRequest.ClientNumber);
             if (isBanned)
             {
-                MessageBox.Show("Данный пользователь находится в черноом списке","Сообщение");
+                MessageBox.Show("Данный пользователь находится в черном списке","Сообщение");
                 throw new Exception();
             }
             else

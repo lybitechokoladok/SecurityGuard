@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SecurityGuard.WPF.Commands
 {
@@ -22,7 +23,15 @@ namespace SecurityGuard.WPF.Commands
 
         protected override async Task ExecuteAsync(object parameter)
         {
-            await _requestStore.LoadAllNew();
+            try
+            {
+                await _requestStore.LoadAllNew();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не удалось загрузить список заявок", "Сообщение");
+                throw new Exception();
+            }
         }
     }
 }
