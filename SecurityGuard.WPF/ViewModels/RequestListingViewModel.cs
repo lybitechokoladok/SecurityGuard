@@ -25,6 +25,17 @@ namespace SecurityGuard.WPF.ViewModels
         private readonly RequestStore _requestStore;
 
         public ICollectionView RequestCollectionView { get; }
+        private bool _hasSearchResult;
+
+        public bool HasSearchResult
+        {
+            get { return _hasSearchResult; }
+            set 
+            {
+                _hasSearchResult = value; 
+                OnPropertyChanged(nameof(HasSearchResult));
+            }
+        }
 
         private int _requestCount;
         public int RequestCount 
@@ -37,7 +48,40 @@ namespace SecurityGuard.WPF.ViewModels
             } 
         }
 
+        private int _dateFilterIndex;
 
+        public int DateFilterIndex
+        {
+            get { return _dateFilterIndex; }
+            set 
+            {
+                _dateFilterIndex = value;
+                OnPropertyChanged(nameof(DateFilterIndex));
+                RequestCollectionView.SortDescriptions.Clear();
+
+                if (value == 0)
+                    RequestCollectionView.SortDescriptions.Add(new SortDescription(nameof(RequestListingItemViewModel.ArrivalDate), ListSortDirection.Ascending));
+                else
+                    RequestCollectionView.SortDescriptions.Add(new SortDescription(nameof(RequestListingItemViewModel.ArrivalDate), ListSortDirection.Descending));
+            }
+        }
+
+        private int _typeFilterIndex;
+        public int TypeFilterIndex
+        {
+            get { return _typeFilterIndex; }
+            set
+            {
+                _typeFilterIndex = value;
+                OnPropertyChanged(nameof(TypeFilterIndex));
+                RequestCollectionView.SortDescriptions.Clear();
+
+                if (value == 0)
+                    RequestCollectionView.SortDescriptions.Add(new SortDescription(nameof(RequestListingItemViewModel.Type), ListSortDirection.Ascending));
+                else
+                    RequestCollectionView.SortDescriptions.Add(new SortDescription(nameof(RequestListingItemViewModel.Type), ListSortDirection.Descending));
+            }
+        }
 
         private string _requestFilter = string.Empty;
         public string RequestFilter
@@ -79,7 +123,8 @@ namespace SecurityGuard.WPF.ViewModels
             _selectedRequestStore = selectedRequestStore;
             _requestListingItemViewModels = new ObservableCollection<RequestListingItemViewModel>();
             RequestCollectionView = CollectionViewSource.GetDefaultView(_requestListingItemViewModels);
-            RequestCollectionView.GroupDescriptions.Add(new PropertyGroupDescription(nameof(RequestListingItemViewModel.RequestType)));
+            RequestCollectionView.SortDescriptions.Add(new SortDescription(nameof(RequestListingItemViewModel.ArrivalDate), ListSortDirection.Ascending));
+            RequestCollectionView.SortDescriptions.Add(new SortDescription(nameof(RequestListingItemViewModel.Type), ListSortDirection.Ascending));
 
             RequestCollectionView.Filter = FilterRequest;
 
@@ -113,11 +158,16 @@ namespace SecurityGuard.WPF.ViewModels
 
         private bool FilterRequest(object obj)
         {
+
             if(obj is RequestListingItemViewModel request) 
             {
+                if (request.FullName.Contains(RequestFilter, StringComparison.InvariantCultureIgnoreCase))
+                    HasSearchResult = true;
+                else
+                    HasSearchResult = false;
+
                 return request.FullName.Contains(RequestFilter, StringComparison.InvariantCultureIgnoreCase);
             }
-
             return false;
         }
 

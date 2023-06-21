@@ -12,8 +12,8 @@ namespace SecurityGuard.WPF.ViewModels
     {
         public Request Request { get; private set; }
         public int ClientNumber => Request.Client.Id;
-        public int RequestNumber => Request.Id; 
-
+        public int RequestNumber => Request.Id;
+        public string Type => Request.Type.Description;
         public string RequestType => Request.Type.Description;
 
         public string FullName => Request.ToString();

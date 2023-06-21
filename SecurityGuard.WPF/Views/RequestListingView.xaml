@@ -5,8 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SecurityGuard.WPF.Views"
              xmlns:components="clr-namespace:SecurityGuard.WPF.Components"
+             xmlns:converters="clr-namespace:SecurityGuard.WPF.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:InvertableBooleanToVisibilityConverter x:Key="InvertableBooleanToVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.Resources>
             <ResourceDictionary Source="../Resources/Styles/FlatComboBoxStyle.xaml"/>
@@ -22,6 +26,7 @@
             Grid.Row="0">
 
             <TextBox
+                    x:Name="SearchText"
                     Text="{Binding RequestFilter, UpdateSourceTrigger=PropertyChanged}"
                     Foreground="white"
                     Height="30" Width="200"
@@ -53,6 +58,7 @@
                     VerticalContentAlignment="Center"
                     IsEditable="True"
                     IsReadOnly="True"
+                    SelectedIndex="{Binding TypeFilterIndex}"
                     Text="Выберите тип заявки">
 
                     <ComboBoxItem
@@ -78,6 +84,7 @@
                     Style="{StaticResource ComboBoxFlatStyle}"
                     IsEditable="True"
                     IsReadOnly="True"
+                    SelectedIndex="{Binding DateFilterIndex}"
                     Text="Выберите из списка">
 
                     <ComboBoxItem
@@ -104,7 +111,10 @@
         <StackPanel
             Grid.Row="1"
             Margin="0 100 0 0"
-            Orientation="Vertical">
+            Orientation="Vertical"
+            Visibility="{Binding HasSearchResult,
+            Converter={StaticResource InvertableBooleanToVisibilityConverter},
+            ConverterParameter=Normal, UpdateSourceTrigger=PropertyChanged}">
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -158,5 +168,16 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <TextBlock
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Visibility="{Binding HasSearchResult,
+            Converter={StaticResource InvertableBooleanToVisibilityConverter},
+            ConverterParameter=Inverted, UpdateSourceTrigger=PropertyChanged}">
+            <Run Text="Отсутствуют результаты поиска по запросу"/>
+            <Run Text="{Binding Text, ElementName=SearchText}"/>
+        </TextBlock>
     </Grid>
 </UserControl>
