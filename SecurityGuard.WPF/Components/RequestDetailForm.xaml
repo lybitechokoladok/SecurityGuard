@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SecurityGuard.WPF.Components"
              xmlns:converters="clr-namespace:SecurityGuard.WPF.Converters"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="#1C2530">
@@ -19,31 +20,59 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <StackPanel
-            Grid.Row="0"
-            Orientation="Vertical">
-                <TextBlock>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel
+                    Grid.Column="0"
+                    Orientation="Vertical">
+                    <TextBlock>
                 <Run Text="Номер заявки: "/>
                 <Run Text="{Binding RequestId}"/>
-                </TextBlock>
-                <TextBlock TextWrapping="Wrap">
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap">
                 <Run Text="ФИО посетителя: "/>
                 <Run Text="{Binding FullName}"/>
-                </TextBlock>
-                <TextBlock>
+                    </TextBlock>
+                    <TextBlock>
                 <Run BaselineAlignment="Center"
                     Text="Дата прибытия: "/>
                     <Run Text="{Binding ArrivalDate,StringFormat={}{0:yy.MM.dd hh:mm:ss}}"/>
-                </TextBlock>
-                <TextBlock>
+                    </TextBlock>
+                    <TextBlock>
                     <Run Text="Серия паспорта:"/>
                     <Run Text="{Binding PasportSeries}"/>
-                </TextBlock>
-                <TextBlock>
+                    </TextBlock>
+                    <TextBlock>
                     <Run Text="Номер паспорта:"/>
                     <Run Text="{Binding PasportNumber}"/>
-                </TextBlock>
-            </StackPanel>
+                    </TextBlock>
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Column="1"
+                    Orientation="Horizontal">
+                    <Button
+                    x:Name="BtnSaveWord"
+                    ToolTip="Сохранить Word"
+                    Click="BtnSaveWord_Click">
+                        <fa:IconImage
+                        Icon="FileWord"
+                        Foreground="#d9d9d9"/>
+                    </Button>
+                    <Button
+                    x:Name="BtnSavePdf"
+                    ToolTip="Сохранить PDF"
+                    Click="BtnSavePdf_Click">
+                        <fa:IconImage
+                        Icon="FilePdf"
+                        Foreground="#d9d9d9"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
 
             <DockPanel
             Grid.Row="1"
