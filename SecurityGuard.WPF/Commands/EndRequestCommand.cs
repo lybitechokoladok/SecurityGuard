@@ -34,6 +34,7 @@ namespace SecurityGuard.WPF.Commands
                 MessageBox.Show("Не удалось завершить посещение", "Сообщение");
                 throw new Exception();
             }
+            await _store.LoadAllCurrent();
         }
     }
 }

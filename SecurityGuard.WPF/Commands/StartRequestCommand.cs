@@ -34,6 +34,7 @@ namespace SecurityGuard.WPF.Commands
                 MessageBox.Show("Не удалось начать заявку", "Сообщение");
                 throw new Exception();
             }
+            await _store.LoadAllApproved();
         }
     }
 }
