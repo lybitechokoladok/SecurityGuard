@@ -60,21 +60,14 @@
 
             <RadioButton Style="{DynamicResource menuButton}"
                          Tag="#d9d9d9"
-                         Margin="0 20 0 0">
+                         Margin="0 20 0 0"
+                         Command="{Binding NavigateInProcessRequestListingCommand}">
                 <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="ClockRotateLeft" Style="{DynamicResource menuButtonIcon}"/>
                     <TextBlock Text="Текущие посещения" Style="{DynamicResource menuButtonText}" Margin="10 0 0 0"/>
                 </StackPanel>
             </RadioButton>
 
-            <RadioButton Style="{DynamicResource menuButton}"
-                         Tag="#d9d9d9"
-                         Margin="0 20 0 0">
-                <StackPanel Orientation="Horizontal">
-                    <fa:IconImage Icon="Ban" Style="{DynamicResource menuButtonIcon}"/>
-                    <TextBlock Text="Черный список" Style="{DynamicResource menuButtonText}" Margin="10 0 0 0"/>
-                </StackPanel>
-            </RadioButton>
             <RadioButton Style="{DynamicResource menuButton}"
                          Tag="#d9d9d9"
                          Margin="0 20 0 0"

@@ -36,6 +36,9 @@
             <DataTemplate DataType="{x:Type vms:ApprovedRequestListingViewModel}">
                 <views:ApprovedRequestListingView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:InProcessRequestListingViewModel}">
+                <views:InProcessRequestListingView/>
+            </DataTemplate>
         </Grid.Resources>
 
         <custom:Modal Panel.ZIndex="1" IsOpen="{Binding IsOpen}">

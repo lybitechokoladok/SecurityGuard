@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="SecurityGuard.WPF.Components.ApprovedRequestListingItem"
+﻿<UserControl x:Class="SecurityGuard.WPF.Components.InProcessRequestListingItem"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -40,7 +40,7 @@
                 Foreground="#d9d9d9"
                 Background="#323D4B"
                 HorizontalContentAlignment="Center"
-                Command="{Binding StartRequestCommand}"/>
+                Command="{Binding EndRequestCommand}"/>
         </Grid>
     </Border>
 </UserControl>

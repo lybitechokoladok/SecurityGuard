@@ -99,7 +99,7 @@ namespace SecurityGuard.WPF.ViewModels
 
         private string _requestFilter = string.Empty;
 
-        public ICommand ApproveRequestCommand { get; }
+        public ICommand StartRequestCommand { get; }
         public ICommand LoadApprovedRequestCommand { get; }
         public ApprovedRequestListingViewModel(
             RequestStore requestStore,
@@ -115,7 +115,7 @@ namespace SecurityGuard.WPF.ViewModels
             ApprovedRequestCollectionView.SortDescriptions.Add(
                 new SortDescription(nameof(ApprovedRequestListingItemViewModel.Type), ListSortDirection.Ascending));
 
-            ApproveRequestCommand = new StartRequestCommand(requestStore, this);
+            StartRequestCommand = new StartRequestCommand(requestStore, this);
             LoadApprovedRequestCommand = new LoadApprovedRequestCommand(requestStore);
             LoadApprovedRequestCommand.Execute(null);
 
@@ -141,7 +141,7 @@ namespace SecurityGuard.WPF.ViewModels
         private void AddRequest(Request request)
         {
             ApprovedRequestListingItemViewModel itemViewModel =
-                new ApprovedRequestListingItemViewModel(request, ApproveRequestCommand);
+                new ApprovedRequestListingItemViewModel(request, StartRequestCommand);
             _requestListingItemViewModels.Add(itemViewModel);
         }
         private bool FilterRequest(object obj)

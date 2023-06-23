@@ -20,11 +20,11 @@ namespace SecurityGuard.WPF.ViewModels
 
         public DateTime ArrivalDate => Request.ArrivalDate;
 
-        public ICommand ApproveRequestCommand { get; }
-        public ApprovedRequestListingItemViewModel(Request request, ICommand approveRequestCommand)
+        public ICommand StartRequestCommand { get; }
+        public ApprovedRequestListingItemViewModel(Request request, ICommand startRequestCommand)
         {
             Request = request;
-            ApproveRequestCommand = approveRequestCommand;
+            StartRequestCommand = startRequestCommand;
         }
     }
 }

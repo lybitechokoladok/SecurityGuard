@@ -1,0 +1,204 @@
+﻿<UserControl x:Class="SecurityGuard.WPF.Views.InProcessRequestListingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SecurityGuard.WPF.Views"
+             xmlns:converters="clr-namespace:SecurityGuard.WPF.Converters"
+             xmlns:components="clr-namespace:SecurityGuard.WPF.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converters:InvertableBooleanToVisibilityConverter x:Key="InvertableBooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.Resources>
+            <ResourceDictionary Source="../Resources/Styles/FlatComboBoxStyle.xaml"/>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel
+            Orientation="Horizontal"
+            Grid.Row="0">
+
+            <Grid>
+                <TextBox
+                    x:Name="SearchText"
+                    Text="{Binding RequestFilter, UpdateSourceTrigger=PropertyChanged}"
+                    Foreground="white"
+                    Height="30" Width="200"
+                    FontSize="20"
+                    VerticalContentAlignment="Center"
+                VerticalAlignment="Bottom"
+                    Padding="10 0 0 0"
+                    Background="#323D4B"
+                    BorderThickness="0">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="2"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <TextBlock 
+                    IsHitTestVisible="False"
+                    Text="Введите ФИО клиента"
+                    Foreground="white"
+                    FontSize="14"
+                    VerticalAlignment="Bottom"
+                    Margin="10 0 0 5">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Setter Property="Opacity" Value="0.3"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=SearchText}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+            <StackPanel
+                Orientation="Vertical"
+                Margin="50 0 0 0">
+
+                <TextBlock
+                Text="Тип заявки"
+                    FontSize="16"
+                    Foreground="#d9d9d9"/>
+
+                <ComboBox
+                    Height="30" Width="190"
+                    Style="{StaticResource ComboBoxFlatStyle}"
+                    VerticalContentAlignment="Center"
+                    IsEditable="True"
+                    IsReadOnly="True"
+                    SelectedIndex="{Binding TypeFilterIndex}"
+                    Text="Выберите тип заявки">
+
+                    <ComboBoxItem
+                        HorizontalContentAlignment="Center"
+                        Content="Одиночная"/>
+                    <ComboBoxItem
+                        HorizontalContentAlignment="Center"
+                        Content="Групповая"/>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel
+                Orientation="Vertical"
+                Margin="50 0 0 0">
+
+                <TextBlock
+               Text="Дата подачи"
+               FontSize="16"
+               Foreground="#d9d9d9"/>
+
+                <ComboBox
+                    Height="30" Width="180"
+                    Style="{StaticResource ComboBoxFlatStyle}"
+                    IsEditable="True"
+                    IsReadOnly="True"
+                    SelectedIndex="{Binding DateFilterIndex}"
+                    Text="Выберите из списка">
+
+                    <ComboBoxItem
+                        HorizontalContentAlignment="Center"
+                        Content="По возрастанию"/>
+                    <ComboBoxItem
+                        HorizontalContentAlignment="Center"
+                        Content="По убыванию"/>
+                </ComboBox>
+            </StackPanel>
+
+            <TextBlock
+                Foreground="#d9d9d9"
+                VerticalAlignment="Bottom"
+                Margin="50 0 0 0"
+                FontSize="20">
+                <Run Text="Заявки"/>
+                <Run Text="("/>
+                <Run Text="{Binding RequestCount}"/>
+                <Run Text=")"/>
+            </TextBlock>
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="1"
+            Margin="0 100 0 0"
+            Orientation="Vertical"
+            Visibility="{Binding HasSearchResult,
+            Converter={StaticResource InvertableBooleanToVisibilityConverter},
+            ConverterParameter=Normal, UpdateSourceTrigger=PropertyChanged}">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="9*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Column="0"
+                    Text="Номер заявки"
+                    Foreground="#d9d9d9"
+                    FontSize="14"/>
+
+                <TextBlock
+                    Grid.Column="1"
+                    Foreground="#d9d9d9"
+                    FontSize="14"
+                    Text="ФИО Клиента"/>
+                <TextBlock
+                    Grid.Column="2"
+                    Foreground="#d9d9d9"
+                    FontSize="14"
+                    Text="Дата подачи"/>
+            </Grid>
+        </StackPanel>
+
+        <ListView
+                Grid.Row="2"
+                Background="Transparent"
+                BorderThickness="0"
+                Margin="0 10 0 0"
+                ItemsSource="{Binding InProcessRequestCollectionView}"
+                SelectedItem="{Binding SelectedRequest}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <ContentPresenter />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <components:InProcessRequestListingItem/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBlock
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Visibility="{Binding HasSearchResult,
+            Converter={StaticResource InvertableBooleanToVisibilityConverter},
+            ConverterParameter=Inverted, UpdateSourceTrigger=PropertyChanged}">
+            <Run Text='Отсутствуют результаты поиска по запросу &quot;'/>
+            <Run Text="{Binding Text, ElementName=SearchText}"/>
+            <Run Text='&quot;'/>
+        </TextBlock>
+    </Grid>
+</UserControl>

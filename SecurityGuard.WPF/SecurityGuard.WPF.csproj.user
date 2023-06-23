@@ -16,6 +16,9 @@
     <Compile Update="Components\GroupMemberItem.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Components\InProcessRequestListingItem.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\Layout.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -32,6 +35,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\ApprovedRequestListingView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\InProcessRequestListingView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\LoginView.xaml.cs">
@@ -57,6 +63,9 @@
     <Page Update="Components\GroupMemberItem.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Components\InProcessRequestListingItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Components\Layout.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -79,6 +88,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ApprovedRequestListingView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\InProcessRequestListingView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\LoginView.xaml">

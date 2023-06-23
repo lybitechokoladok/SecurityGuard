@@ -19,6 +19,7 @@ namespace SecurityGuard.WPF.ViewModels
 
         public ICommand NavigateRequestListingCommand { get; }
         public ICommand NavigateApprovedRequestListingCommand { get; }
+        public ICommand NavigateInProcessRequestListingCommand { get; }
         public ICommand NavigateStatisticsCommand { get; }
         public ICommand NavigateLoginCommand { get; }
 
@@ -27,13 +28,15 @@ namespace SecurityGuard.WPF.ViewModels
         public NavigationBarViewModel(
             AccountStore accountStore, 
             INavigationService requestListingNavigationService,
-            INavigationService approvedRequestListingnavigationService,
+            INavigationService approvedRequestListingNavigationService,
+            INavigationService inProcessRequestListingNavigationService,
             INavigationService statisticsnavigationService,
             INavigationService loginNavigationService)
         {
             _accountStore = accountStore;
             NavigateRequestListingCommand = new NavigateCommand(requestListingNavigationService);
-            NavigateApprovedRequestListingCommand = new NavigateCommand(approvedRequestListingnavigationService);
+            NavigateApprovedRequestListingCommand = new NavigateCommand(approvedRequestListingNavigationService);
+            NavigateInProcessRequestListingCommand = new NavigateCommand(inProcessRequestListingNavigationService);
             NavigateStatisticsCommand = new NavigateCommand(statisticsnavigationService);
             NavigateLoginCommand = new LogoutCommand(accountStore, loginNavigationService);
         }

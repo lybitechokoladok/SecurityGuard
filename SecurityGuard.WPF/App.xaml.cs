@@ -66,6 +66,7 @@ namespace SecurityGuard.WPF
                      serviceCollection.AddTransient<ApprovedRequestListingViewModel>(s=>
                      new ApprovedRequestListingViewModel(s.GetRequiredService<RequestStore>(),
                      s.GetRequiredService<SelectedRequestStore>()));
+                     serviceCollection.AddTransient<InProcessRequestListingViewModel>();
                      serviceCollection.AddTransient<RequestDetailViewModel>(s => new RequestDetailViewModel(
                          s.GetRequiredService<SelectedRequestStore>(),
                          s.GetRequiredService<MemberStore>(),
@@ -131,8 +132,17 @@ namespace SecurityGuard.WPF
             return new NavigationBarViewModel(arg.GetRequiredService<AccountStore>(),
                 CreateRequestListingNavigationService(arg),
                 CreateApprovedRequestListingNavigationService(arg),
+                CreateInProcessRequestListingNavigationService(arg),
                 CreateStatisticsNavigationService(arg),
                 CreateLoginNavigationService(arg));
+        }
+
+        private INavigationService CreateInProcessRequestListingNavigationService(IServiceProvider arg)
+        {
+            return new LayoutNavigationService<InProcessRequestListingViewModel>(
+                arg.GetRequiredService<NavigationStore>(),
+                () => arg.GetRequiredService<InProcessRequestListingViewModel>(),
+                () => arg.GetRequiredService<NavigationBarViewModel>());
         }
 
         private INavigationService CreateApprovedRequestListingNavigationService(IServiceProvider arg)
