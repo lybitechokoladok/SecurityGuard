@@ -66,7 +66,9 @@ namespace SecurityGuard.WPF
                      serviceCollection.AddTransient<ApprovedRequestListingViewModel>(s=>
                      new ApprovedRequestListingViewModel(s.GetRequiredService<RequestStore>(),
                      s.GetRequiredService<SelectedRequestStore>()));
-                     serviceCollection.AddTransient<InProcessRequestListingViewModel>();
+                     serviceCollection.AddTransient<InProcessRequestListingViewModel>(s=>
+                     new InProcessRequestListingViewModel(s.GetRequiredService<RequestStore>(),
+                     s.GetRequiredService<SelectedRequestStore>()));
                      serviceCollection.AddTransient<RequestDetailViewModel>(s => new RequestDetailViewModel(
                          s.GetRequiredService<SelectedRequestStore>(),
                          s.GetRequiredService<MemberStore>(),

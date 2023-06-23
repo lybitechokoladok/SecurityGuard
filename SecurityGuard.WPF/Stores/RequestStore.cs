@@ -19,6 +19,7 @@ namespace SecurityGuard.WPF.Stores
 
         public event Action RequestsLoaded;
         public event Action ApprovedRequestLoaded;
+        public event Action InProcessRequestLoaded;
         public event Action <Request> RequestsSelected;
         public RequestStore(IRequestRepository requestRepository)
         {
@@ -69,6 +70,8 @@ namespace SecurityGuard.WPF.Stores
 
             _requests.Clear();
             _requests.AddRange(currentRequests);
+
+            InProcessRequestLoaded.Invoke();
         }
 
         public async Task<bool> UpdateRequestState(int requestDetailId, int newState) 

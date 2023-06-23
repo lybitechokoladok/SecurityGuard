@@ -168,5 +168,11 @@ namespace SecurityGuard.WPF.ViewModels
                 ApprovedRequestCollectionView.Refresh();
             }
         }
+
+        public override void Dispose()
+        {
+            _requestStore.ApprovedRequestLoaded -= OnRequestLoaded;
+            base.Dispose();
+        }
     }
 }
