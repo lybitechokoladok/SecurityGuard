@@ -5,11 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SecurityGuard.WPF.Components"
              xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             xmlns:converters="clr-namespace:SecurityGuard.WPF.Converters"
              mc:Ignorable="d" 
              Background="#1C2530"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <converters:InvertableBooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </UserControl.Resources>
     <Grid Width="370"
           Margin="0 20 0 0">
@@ -40,7 +41,8 @@
                          Tag="#d9d9d9"
                          Margin="0 20 0 0"
                          Visibility="{Binding IsGeneralDepartmentOfficer,
-                                              Converter={StaticResource BooleanToVisibilityConverter}}"
+                                              Converter={StaticResource BooleanToVisibilityConverter},
+                                              ConverterParameter=Normal}"
                          Command="{Binding NavigateRequestListingCommand}">
                 <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="Home" Style="{DynamicResource menuButtonIcon}"/>
@@ -51,7 +53,10 @@
             <RadioButton Style="{DynamicResource menuButton}"
                          Tag="#d9d9d9"
                          Margin="0 20 0 0"
-                         Command="{Binding NavigateApprovedRequestListingCommand}">
+                         Command="{Binding NavigateApprovedRequestListingCommand}"
+                         Visibility="{Binding IsGeneralDepartmentOfficer,
+                                              Converter={StaticResource BooleanToVisibilityConverter},
+                                              ConverterParameter=Inverted}">
             <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="TabletAlt" Style="{DynamicResource menuButtonIcon}"/>
                     <TextBlock Text="Одобренные заявки" Style="{DynamicResource menuButtonText}" Margin="10 0 0 0"/>
@@ -61,7 +66,10 @@
             <RadioButton Style="{DynamicResource menuButton}"
                          Tag="#d9d9d9"
                          Margin="0 20 0 0"
-                         Command="{Binding NavigateInProcessRequestListingCommand}">
+                         Command="{Binding NavigateInProcessRequestListingCommand}"
+                         Visibility="{Binding IsGeneralDepartmentOfficer,
+                                              Converter={StaticResource BooleanToVisibilityConverter},
+                                              ConverterParameter=Inverted}">
                 <StackPanel Orientation="Horizontal">
                     <fa:IconImage Icon="ClockRotateLeft" Style="{DynamicResource menuButtonIcon}"/>
                     <TextBlock Text="Текущие посещения" Style="{DynamicResource menuButtonText}" Margin="10 0 0 0"/>

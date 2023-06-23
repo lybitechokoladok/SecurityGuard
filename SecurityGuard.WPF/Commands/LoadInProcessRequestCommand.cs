@@ -31,7 +31,6 @@ namespace SecurityGuard.WPF.Commands
                 MessageBox.Show("Не удалось загрузить список заявок", "Сообщение");
                 throw new Exception();
             }
-            await _store.LoadAllCurrent();
         }
     }
 }
