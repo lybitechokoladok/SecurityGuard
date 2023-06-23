@@ -33,6 +33,9 @@
             <DataTemplate DataType="{x:Type vms:RequestTypeStatisticViewModel}">
                 <views:StatisticsView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:ApprovedRequestListingViewModel}">
+                <views:ApprovedRequestListingView/>
+            </DataTemplate>
         </Grid.Resources>
 
         <custom:Modal Panel.ZIndex="1" IsOpen="{Binding IsOpen}">

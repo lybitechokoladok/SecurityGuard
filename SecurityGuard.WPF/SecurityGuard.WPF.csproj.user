@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Components\ApprovedRequestListingItem.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Components\BindablePasswordBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +31,9 @@
     <Compile Update="Components\RequestListingItem.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ApprovedRequestListingView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\LoginView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -42,6 +48,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Components\ApprovedRequestListingItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Components\BindablePasswordBox.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -67,6 +76,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Styles\FlatComboBoxStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ApprovedRequestListingView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\LoginView.xaml">
