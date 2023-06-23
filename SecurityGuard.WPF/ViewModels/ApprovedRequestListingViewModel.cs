@@ -17,6 +17,7 @@ namespace SecurityGuard.WPF.ViewModels
     public class ApprovedRequestListingViewModel : ViewModelBase
     {
         private readonly ObservableCollection<ApprovedRequestListingItemViewModel> _requestListingItemViewModels;
+        private readonly SelectedRequestStore _selectedRequestStore;
         private readonly RequestStore _requestStore;
 
         public ICollectionView ApprovedRequestCollectionView { get; }
@@ -82,14 +83,31 @@ namespace SecurityGuard.WPF.ViewModels
             }
         }
 
+        private ApprovedRequestListingItemViewModel _selectedRequest;
+
+        public ApprovedRequestListingItemViewModel SelectedRequest
+        {
+            get { return _selectedRequest; }
+            set
+            {
+                _selectedRequest = value;
+                OnPropertyChanged(nameof(SelectedRequest));
+
+                _selectedRequestStore.SelectedRequest = _selectedRequest?.Request;
+            }
+        }
+
         private string _requestFilter = string.Empty;
 
         public ICommand ApproveRequestCommand { get; }
         public ICommand LoadApprovedRequestCommand { get; }
-        public ApprovedRequestListingViewModel(RequestStore requestStore)
+        public ApprovedRequestListingViewModel(
+            RequestStore requestStore,
+            SelectedRequestStore selectedRequestStore)
         {
             _requestListingItemViewModels = new ObservableCollection<ApprovedRequestListingItemViewModel>();
             _requestStore = requestStore;
+            _selectedRequestStore = selectedRequestStore;
 
             ApprovedRequestCollectionView = CollectionViewSource.GetDefaultView(_requestListingItemViewModels);
             ApprovedRequestCollectionView.SortDescriptions.Add(
@@ -97,12 +115,14 @@ namespace SecurityGuard.WPF.ViewModels
             ApprovedRequestCollectionView.SortDescriptions.Add(
                 new SortDescription(nameof(ApprovedRequestListingItemViewModel.Type), ListSortDirection.Ascending));
 
+            ApproveRequestCommand = new StartRequestCommand(requestStore, this);
             LoadApprovedRequestCommand = new LoadApprovedRequestCommand(requestStore);
             LoadApprovedRequestCommand.Execute(null);
 
             ApprovedRequestCollectionView.Filter = FilterRequest;
 
             _requestStore.ApprovedRequestLoaded += OnRequestLoaded;
+            _selectedRequestStore = selectedRequestStore;
         }
         private void OnRequestLoaded()
         {
@@ -115,6 +135,8 @@ namespace SecurityGuard.WPF.ViewModels
 
             RequestCount = _requestListingItemViewModels.Count;
         }
+
+
 
         private void AddRequest(Request request)
         {
