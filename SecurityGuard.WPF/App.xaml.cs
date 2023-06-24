@@ -54,7 +54,7 @@ namespace SecurityGuard.WPF
                      serviceCollection.AddScoped<IPasswordHasher, PasswordHasher>();
 
                      serviceCollection.AddTransient<LoginViewModel>((s) => new LoginViewModel(
-                         CreateRequestListingNavigationService(s),
+                         CreateStatisticsNavigationService(s),
                          s.GetRequiredService<IAccountService>()));
                      serviceCollection.AddTransient<RequestListingViewModel>(s => new RequestListingViewModel(
                          s.GetRequiredService<RequestStore>(),

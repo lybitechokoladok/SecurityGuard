@@ -63,32 +63,6 @@
                     </TextBlock.Style>
                 </TextBlock>
             </Grid>
-            <StackPanel
-                Orientation="Vertical"
-                Margin="50 0 0 0">
-
-                <TextBlock
-                Text="Тип заявки"
-                    FontSize="16"
-                    Foreground="#d9d9d9"/>
-
-                <ComboBox
-                    Height="30" Width="190"
-                    Style="{StaticResource ComboBoxFlatStyle}"
-                    VerticalContentAlignment="Center"
-                    IsEditable="True"
-                    IsReadOnly="True"
-                    SelectedIndex="{Binding TypeFilterIndex}"
-                    Text="Выберите тип заявки">
-
-                    <ComboBoxItem
-                        HorizontalContentAlignment="Center"
-                        Content="Одиночная"/>
-                    <ComboBoxItem
-                        HorizontalContentAlignment="Center"
-                        Content="Групповая"/>
-                </ComboBox>
-            </StackPanel>
 
             <StackPanel
                 Orientation="Vertical"

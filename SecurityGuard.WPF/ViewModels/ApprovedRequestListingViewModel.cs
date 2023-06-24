@@ -64,25 +64,6 @@ namespace SecurityGuard.WPF.ViewModels
             }
         }
 
-        private int _typeFilterIndex;
-        public int TypeFilterIndex
-        {
-            get { return _typeFilterIndex; }
-            set
-            {
-                _typeFilterIndex = value;
-                OnPropertyChanged(nameof(TypeFilterIndex));
-                ApprovedRequestCollectionView.SortDescriptions.Clear();
-
-                if (value == 0)
-                    ApprovedRequestCollectionView.SortDescriptions.Add(
-                        new SortDescription(nameof(ApprovedRequestListingItemViewModel.Type), ListSortDirection.Ascending));
-                else
-                    ApprovedRequestCollectionView.SortDescriptions.Add(
-                        new SortDescription(nameof(ApprovedRequestListingItemViewModel.Type), ListSortDirection.Descending));
-            }
-        }
-
         private ApprovedRequestListingItemViewModel _selectedRequest;
 
         public ApprovedRequestListingItemViewModel SelectedRequest

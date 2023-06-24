@@ -65,23 +65,7 @@ namespace SecurityGuard.WPF.ViewModels
                     RequestCollectionView.SortDescriptions.Add(new SortDescription(nameof(RequestListingItemViewModel.ArrivalDate), ListSortDirection.Descending));
             }
         }
-
-        private int _typeFilterIndex;
-        public int TypeFilterIndex
-        {
-            get { return _typeFilterIndex; }
-            set
-            {
-                _typeFilterIndex = value;
-                OnPropertyChanged(nameof(TypeFilterIndex));
-                RequestCollectionView.SortDescriptions.Clear();
-
-                if (value == 0)
-                    RequestCollectionView.SortDescriptions.Add(new SortDescription(nameof(RequestListingItemViewModel.Type), ListSortDirection.Ascending));
-                else
-                    RequestCollectionView.SortDescriptions.Add(new SortDescription(nameof(RequestListingItemViewModel.Type), ListSortDirection.Descending));
-            }
-        }
+       
 
         private string _requestFilter = string.Empty;
         public string RequestFilter
