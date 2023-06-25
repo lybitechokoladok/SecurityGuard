@@ -119,7 +119,7 @@ namespace SecurityGuard.WPF.Services
             PdfPTable table = new PdfPTable(dt.Columns.Count);
 
             Array floatArray = Array.CreateInstance(typeof(float), dt.Columns.Count);
-            //float[] widths = new float[] { };
+            float[] widths = new float[] { };
             for (int i = 0; i < dt.Columns.Count; i++)
                 floatArray.SetValue(4f, i);
 
