@@ -37,7 +37,7 @@ namespace SecurityGuard.WPF.ViewModels
             LoadAllRequestCommand = new LoadRequestStatisticCommand( requestStore);
             LoadAllRequestCommand.Execute(null); 
 
-            _requestStore.RequestsLoaded += OnRequestLoaded;
+            _requestStore.AllRequestsLoaded += OnRequestLoaded;
         }
 
         private void OnRequestLoaded()
@@ -62,7 +62,7 @@ namespace SecurityGuard.WPF.ViewModels
 
         public override void Dispose()
         {
-            _requestStore.RequestsLoaded -= OnRequestLoaded;
+            _requestStore.AllRequestsLoaded -= OnRequestLoaded;
 
             base.Dispose();
         }

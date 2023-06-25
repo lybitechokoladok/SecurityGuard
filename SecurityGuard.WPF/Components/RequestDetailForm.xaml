@@ -153,12 +153,14 @@
             Grid.Row="3"
             Margin="10">
                 <Button
+                    x:Name="BtnApprove"
                 Content="Одобрить"
                 Foreground="Black"
                 Height="40" Width="100"
                 HorizontalAlignment="Left"
                 Command="{Binding UpdateRequestStateCommand}"/>
                 <Button
+                    x:Name="BtnCancel"
                 Content="Отмена"
                 Height="40" Width="100"
                 Foreground="Black"

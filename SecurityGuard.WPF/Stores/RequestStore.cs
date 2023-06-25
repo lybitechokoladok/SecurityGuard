@@ -17,9 +17,10 @@ namespace SecurityGuard.WPF.Stores
         public IEnumerable<Request> Requests => _requests;
 
 
-        public event Action RequestsLoaded;
+        public event Action NewRequestsLoaded;
         public event Action ApprovedRequestLoaded;
         public event Action InProcessRequestLoaded;
+        public event Action AllRequestsLoaded;
         public event Action <Request> RequestsSelected;
         public RequestStore(IRequestRepository requestRepository)
         {
@@ -35,7 +36,7 @@ namespace SecurityGuard.WPF.Stores
             _requests.Clear();
             _requests.AddRange(requests);
 
-            RequestsLoaded?.Invoke();
+            AllRequestsLoaded?.Invoke();
         }
 
         public async Task  LoadAllNew() 
@@ -47,7 +48,7 @@ namespace SecurityGuard.WPF.Stores
             _requests.Clear();
             _requests.AddRange(newRequests);
 
-            RequestsLoaded?.Invoke();
+            NewRequestsLoaded?.Invoke();
         }
 
         public async Task LoadAllApproved() 

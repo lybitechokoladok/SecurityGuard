@@ -1,7 +1,9 @@
-﻿using iTextSharp.text.pdf;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -77,11 +79,11 @@ namespace SecurityGuard.WPF.Services
             using (Stream imageStream = File.OpenRead(imageFile))
             {
 
-                Image image = document.AddImage(imageStream);
+                Xceed.Document.NET.Image image = document.AddImage(imageStream);
                 Picture picture = image.CreatePicture();
                 picture.Width = 500;
                 picture.Height = 500;
-                Paragraph paragraph = document.InsertParagraph();
+                Xceed.Document.NET.Paragraph paragraph = document.InsertParagraph();
                 paragraph.AppendPicture(picture);
             }
 
@@ -104,6 +106,47 @@ namespace SecurityGuard.WPF.Services
             {
                 encoder.Save(stream);
             }
+        }
+
+        public void ExportToPdf(DataTable dt)
+        {
+            iTextSharp.text.Document document = new iTextSharp.text.Document();
+            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream("c://sample.pdf", FileMode.Create));
+            document.Open();
+
+            iTextSharp.text.Font font5 = FontFactory.GetFont(FontFactory.HELVETICA, 5);
+
+            PdfPTable table = new PdfPTable(dt.Columns.Count);
+
+            Array floatArray = Array.CreateInstance(typeof(float), dt.Columns.Count);
+            //float[] widths = new float[] { };
+            for (int i = 0; i < dt.Columns.Count; i++)
+                floatArray.SetValue(4f, i);
+
+            table.SetWidths((float[])floatArray);
+
+            table.WidthPercentage = 100;
+            PdfPCell cell = new PdfPCell(new Phrase("Products"));
+
+            cell.Colspan = dt.Columns.Count;
+
+            foreach (DataColumn c in dt.Columns)
+            {
+                table.AddCell(new Phrase(c.ColumnName, font5));
+            }
+
+            foreach (DataRow r in dt.Rows)
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dt.Columns.Count; i++)
+                    {
+                        table.AddCell(new Phrase(r[i].ToString(), font5));
+                    }
+                }
+            }
+            document.Add(table);
+            document.Close();
         }
     }
 }

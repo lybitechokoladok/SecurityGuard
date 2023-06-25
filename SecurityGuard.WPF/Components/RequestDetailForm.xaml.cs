@@ -29,6 +29,7 @@ namespace SecurityGuard.WPF.Components
 
         private void BtnSaveWord_Click(object sender, RoutedEventArgs e)
         {
+            HideElements();
             try
             {
                 string imagePath = System.IO.Path.GetTempFileName() + ".png";
@@ -41,10 +42,12 @@ namespace SecurityGuard.WPF.Components
                 MessageBox.Show($"{ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 throw new Exception();
             }
+            ShowElements();
         }
 
         private void BtnSavePdf_Click(object sender, RoutedEventArgs e)
         {
+            HideElements();
             try
             {
                 string imagePath;
@@ -81,6 +84,22 @@ namespace SecurityGuard.WPF.Components
                 MessageBox.Show($"{ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+                ShowElements();
+        }
+        private void HideElements()
+        {
+            BtnSavePdf.Visibility = Visibility.Collapsed;
+            BtnSaveWord.Visibility = Visibility.Collapsed;
+            BtnApprove.Visibility = Visibility.Collapsed;
+            BtnCancel.Visibility = Visibility.Collapsed;
+        }
+
+        private void ShowElements() 
+        {
+            BtnSavePdf.Visibility= Visibility.Visible;
+            BtnSaveWord.Visibility= Visibility.Visible;
+            BtnApprove.Visibility= Visibility.Visible;
+            BtnCancel.Visibility= Visibility.Visible;
         }
     }
 }

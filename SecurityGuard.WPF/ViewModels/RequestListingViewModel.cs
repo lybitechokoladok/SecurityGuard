@@ -116,7 +116,7 @@ namespace SecurityGuard.WPF.ViewModels
             LoadRequestsCommand = new LoadRequestsCommand(this, requestStore);
             LoadRequestsCommand.Execute(null);
 
-            _requestStore.RequestsLoaded += OnRequestLoaded;
+            _requestStore.NewRequestsLoaded += OnRequestLoaded;
 
         }
 
@@ -157,7 +157,7 @@ namespace SecurityGuard.WPF.ViewModels
 
         public override void Dispose()
         {
-            _requestStore.RequestsLoaded -= OnRequestLoaded;
+            _requestStore.NewRequestsLoaded -= OnRequestLoaded;
 
             base.Dispose();
         }
