@@ -9,9 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{342B11A8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecurityGuard.WPF", "SecurityGuard.WPF\SecurityGuard.WPF.csproj", "{C52F52FE-EEF9-4B05-B9E8-8C937D7555A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityGuard.Domain", "SecurityGuard.Domain\SecurityGuard.Domain.csproj", "{12B4D63F-3DD1-4AC7-BB9B-BE26437F0D0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecurityGuard.Domain", "SecurityGuard.Domain\SecurityGuard.Domain.csproj", "{12B4D63F-3DD1-4AC7-BB9B-BE26437F0D0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityGuard.Infrastructure", "SecurityGuard.Infrastructure\SecurityGuard.Infrastructure.csproj", "{309DD049-4E93-437F-BCCC-17B1B7A64BC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecurityGuard.Infrastructure", "SecurityGuard.Infrastructure\SecurityGuard.Infrastructure.csproj", "{309DD049-4E93-437F-BCCC-17B1B7A64BC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityGuard.Domain.Tests", "SecurityGuard.Domain.Tests\SecurityGuard.Domain.Tests.csproj", "{51E95EBA-EF3C-4AAE-A209-ECBBD02EF51B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{309DD049-4E93-437F-BCCC-17B1B7A64BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{309DD049-4E93-437F-BCCC-17B1B7A64BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{309DD049-4E93-437F-BCCC-17B1B7A64BC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51E95EBA-EF3C-4AAE-A209-ECBBD02EF51B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E95EBA-EF3C-4AAE-A209-ECBBD02EF51B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E95EBA-EF3C-4AAE-A209-ECBBD02EF51B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E95EBA-EF3C-4AAE-A209-ECBBD02EF51B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{C52F52FE-EEF9-4B05-B9E8-8C937D7555A1} = {B0BF0ABA-7262-4970-989B-F4948558DEA3}
 		{12B4D63F-3DD1-4AC7-BB9B-BE26437F0D0D} = {B0BF0ABA-7262-4970-989B-F4948558DEA3}
 		{309DD049-4E93-437F-BCCC-17B1B7A64BC7} = {B0BF0ABA-7262-4970-989B-F4948558DEA3}
+		{51E95EBA-EF3C-4AAE-A209-ECBBD02EF51B} = {342B11A8-A77D-4BF2-88AC-6295B7AE8BA8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C0105B1-5158-4C92-BB0D-3358D7E217F2}
