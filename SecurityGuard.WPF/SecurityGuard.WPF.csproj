@@ -5,7 +5,17 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\logo.ico" />
+    <None Remove="Resources\Images\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="logo.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="DocX" Version="2.3.0" />
@@ -21,6 +31,11 @@
   <ItemGroup>
     <ProjectReference Include="..\SecurityGuard.Domain\SecurityGuard.Domain.csproj" />
     <ProjectReference Include="..\SecurityGuard.Infrastructure\SecurityGuard.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Icons\logo.ico" />
+    <Resource Include="Resources\Images\logo.png" />
   </ItemGroup>
 
 </Project>

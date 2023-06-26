@@ -19,12 +19,24 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock
-            Grid.Row="0"
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="1"
             Text="SecurityGuard"
             Foreground="#CF6921"
             FontSize="34"
+                VerticalAlignment="Center"
             HorizontalAlignment="Center"/>
+            <Image
+                Grid.Column="0"
+                Source="../Resources/Images/logo.png"
+                Stretch="UniformToFill"
+                Height="100" Width="100"/>
+        </Grid>
 
         <StackPanel
             Grid.Row="1"
