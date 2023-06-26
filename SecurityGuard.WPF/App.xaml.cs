@@ -7,7 +7,9 @@ using MVVMEssentials.ViewModels;
 using SecurityGuard.Domain.Abstractions;
 using SecurityGuard.Domain.Repositories;
 using SecurityGuard.Domain.Services;
+using SecurityGuard.Domain.Extensions;
 using SecurityGuard.Infrastructure;
+using SecurityGuard.Infrastructure.Extensions;
 using SecurityGuard.Infrastructure.Repositories;
 using SecurityGuard.WPF.Services;
 using SecurityGuard.WPF.Stores;
@@ -52,6 +54,7 @@ namespace SecurityGuard.WPF
                      serviceCollection.AddScoped<IRequestRepository, RequestRepository>();
                      serviceCollection.AddScoped<IAccountService, AccountService>();
                      serviceCollection.AddScoped<IPasswordHasher, PasswordHasher>();
+                     serviceCollection.AddScoped<IDapperWrapper, DapperWrapper>();
 
                      serviceCollection.AddTransient<LoginViewModel>((s) => new LoginViewModel(
                          CreateStatisticsNavigationService(s),
