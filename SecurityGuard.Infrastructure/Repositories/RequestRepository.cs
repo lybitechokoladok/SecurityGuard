@@ -32,7 +32,7 @@ namespace SecurityGuard.Infrastructure.Repositories
                var requests = await connection.QueryAsync<Request, Client,RequestType,RequestDetails,User,RequestState,  Request>
                     (sql, (request, client, requestType, requestDetail ,user, requestState) => 
                {
-                   request.Client = client;
+                   request.Clients = client;
                    request.Type = requestType;
                    request.RequestDetails = requestDetail;
                    requestDetail.User = user;
@@ -59,7 +59,7 @@ namespace SecurityGuard.Infrastructure.Repositories
                 var requests = await connection.QueryAsync<Request, Client, RequestType, RequestDetails, User, RequestState, Request>
                      (sql, (request, client, requestType, requestDetail, user, requestState) =>
                      {
-                         request.Client = client;
+                         request.Clients = client;
                          request.Type = requestType;
                          request.RequestDetails = requestDetail;
                          requestDetail.User = user;

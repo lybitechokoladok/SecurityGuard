@@ -28,8 +28,8 @@ namespace SecurityGuard.WPF.ViewModels
                 selectedRequestStore)
             {
                 RequestId = selectedRequestStore.SelectedRequest.Id,
-                PasportNumber = selectedRequestStore.SelectedRequest.Client.PasportNumber,
-                PasportSeries = selectedRequestStore.SelectedRequest.Client.PasportSeries,
+                PasportNumber = selectedRequestStore.SelectedRequest.Clients.PasportNumber,
+                PasportSeries = selectedRequestStore.SelectedRequest.Clients.PasportSeries,
                 FullName = selectedRequestStore.SelectedRequest.ToString(),
                 ArrivalDate = selectedRequestStore.SelectedRequest.ArrivalDate
             };

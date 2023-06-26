@@ -13,14 +13,14 @@ namespace SecurityGuard.Domain.Models
         public string VisitingReason { get; set; } = string.Empty;
         public DateTime ArrivalDate { get; set; } 
         public DateTime CreationDate { get; set; }
-        public Client Client { get; set; }
+        public Client Clients { get; set; }
         public int? GroupId { get; set; }
 
         public RequestDetails RequestDetails { get; set; }
 
         public override string ToString()
         {
-            return Client.FirstName + " " + Client.LastName + " " + Client.Patronomic;
+            return Clients.FirstName + " " + Clients.LastName + " " + Clients.Patronomic;
         }
     }
 }

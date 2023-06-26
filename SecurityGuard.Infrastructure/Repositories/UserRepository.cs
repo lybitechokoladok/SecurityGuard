@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
+using SecurityGuard.Domain.Extensions;
 using SecurityGuard.Domain.Models;
 using SecurityGuard.Domain.Repositories;
 using System.Collections.Generic;
