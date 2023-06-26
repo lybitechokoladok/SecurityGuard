@@ -35,7 +35,7 @@
 
             <Button
                 Grid.Column="3"
-                Content="Начать посещение"
+                Content="Завершить посещение"
                 HorizontalAlignment="Right"
                 Foreground="#d9d9d9"
                 Background="#323D4B"
