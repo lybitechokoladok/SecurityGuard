@@ -58,7 +58,7 @@ namespace SecurityGuard.Domain.Tests.Services
         public void Login_WithNonExistingUsername_ThrowsExeption()
         {
 
-            string expectedUsername = "palpason";
+            string expectedUsername = "palpaso";
             string password = "palpason1";
 
             Exception exception = Assert.ThrowsAsync<Exception>(() => _authenticationService.LoginAsync(expectedUsername, password));

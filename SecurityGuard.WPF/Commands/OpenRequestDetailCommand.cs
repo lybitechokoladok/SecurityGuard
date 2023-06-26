@@ -27,6 +27,11 @@ namespace SecurityGuard.WPF.Commands
 
         protected override async Task ExecuteAsync(object parameter)
         {
+            if(_viewModel.SelectedRequest == null)
+            {
+                MessageBox.Show("Выберите посетителя, чью детальную инорфмацию вы хотите просмотреть. Для этого нажмите на запись", "Сообщение");
+                throw new Exception();
+            }
             var isBanned = await _clientStore.IsClientsBlackList(_viewModel.SelectedRequest.ClientNumber);
             if (isBanned)
             {
